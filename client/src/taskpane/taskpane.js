@@ -11,6 +11,9 @@ Office.onReady().then(function () {
   const tabs = document.querySelectorAll(".tab");
   const tabContents = document.querySelectorAll(".tab-content");
 
+  console.log(tabs);
+  console.log(tabContents);
+
   // Function to switch tabs
   function switchTab(tabId) {
     // Hide all tab contents and deactivate all tabs
