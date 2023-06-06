@@ -4,7 +4,6 @@ const port = process.env.PORT || 3000;
 
 // Define routes
 app.get('/', (req, res) => {
-  res.send(__dirname);
   res.sendFile(__dirname + 'client/assets/icon-128.png');
 });
 
