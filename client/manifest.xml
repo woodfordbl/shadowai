@@ -10,7 +10,7 @@
   <HighResolutionIconUrl DefaultValue="https://shadowai-paj5.onrender.com/client/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://shadowai.webflow.io/help"/>
   <AppDomains>
-    <AppDomain>https://www.contoso.com</AppDomain>
+    <AppDomain>https://shadowai.webflow.io</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Workbook"/>
@@ -67,7 +67,7 @@
         <bt:Image id="Icon.80x80" DefaultValue="https://shadowai-paj5.onrender.com/client/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://shadowai.webflow.io"/>
         <bt:Url id="Commands.Url" DefaultValue="https://shadowai-paj5.onrender.com/client/src/commands/commands.html"/>
         <bt:Url id="Taskpane.Url" DefaultValue="https://shadowai-paj5.onrender.com/client/src/taskpane/taskpane.html"/>
       </bt:Urls>
