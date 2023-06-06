@@ -6,22 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Task Pane Add In</title>
 
-    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://shadowai-paj5.onrender.com/client/taskpane/taskpane/taskpane.js"></script>
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
-
-    <link
-      rel="stylesheet"
-      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"
-    />
-
-    <link href="taskpane.css" rel="stylesheet" type="text/css" />
-
-    <script type="text/javascript" src="taskpane.js"></script>
-
-    <!-- Highlight.js -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
-    <!-- Font Awesome-->
+
+    <link href="https://shadowai-paj5.onrender.com/client/taskpane/taskpane.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   </head>
   <body>
@@ -39,7 +30,6 @@
     </header>
 
     <main id="app-body">
-      <!-- Tab: Create -->
       <div id="TabCreate" class="tab-content active">
         <div id="output">
           <div class="button-container">
@@ -77,9 +67,7 @@
         </div>
       </div>
 
-      <!-- Tab: Explain -->
       <div id="TabExplain" class="tab-content">
-        <!-- Content for Explain tab -->
         <div id="explain-output"></div>
         <div class="form-container">
           <div id="explainInput" class="text-box" contenteditable="true"></div>
@@ -90,10 +78,7 @@
           <button type="submit" title="Refresh Page" class="form-button refresh" onclick="refreshPage('explain-output')"><i class="fa fa-retweet"></i></button>
         </div>
       </div>
-
-      <!-- Tab: VB-Ai -->
       <div id="TabVBAI" class="tab-content">
-        <!-- Content for VB-Ai tab -->
         <div class="container">
           <div class="code-container">
             <div class="code-header">
@@ -116,11 +101,6 @@
           <button type="submit" title="Insert Current Cell Formula" class="form-button current" onclick="getCurrent()"><i class="fas fa-arrow-down"></i></button>
           <button type="submit" title="Refresh Page" class="form-button refresh" onclick="refreshPage('code-output')"><i class="fa fa-retweet"></i></button>
         </div>
-      </div>
-
-      <!-- Tab: Settings -->
-      <div id="Tab4" class="tab-content">
-        <!-- Content for Settings tab -->
       </div>
     </main>
   </body>
