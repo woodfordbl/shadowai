@@ -10,29 +10,33 @@ document.addEventListener('DOMContentLoaded', function() {
   "use strict";
 
   // Store references to the tabs and tab contents
-  const tabs = document.querySelectorAll('.tab');
-  const tabContents = document.querySelectorAll('.tab-content');
+  var tabs = document.querySelectorAll('.tab');
+  var tabContents = document.querySelectorAll('.tab-content');
 
-  console.log(tabs);
-  console.log(tabContents);
+  console.log("tab: " + tabs);
+  console.log("tabcontents: " + tabContents);
 
   // Function to switch tabs
   function switchTab(tabId) {
     // Hide all tab contents and deactivate all tabs
-    tabContents.forEach((tabContent) => (tabContent.style.display = 'none'));
-    tabs.forEach((tab) => tab.classList.remove('active'));
+    tabContents.forEach(function(tabContent) {
+      tabContent.style.display = 'none';
+    });
+    tabs.forEach(function(tab) {
+      tab.classList.remove('active');
+    });
 
     // Show the selected tab content and activate the corresponding tab
-    const selectedTabContent = document.getElementById(tabId);
-    const selectedTab = document.querySelector(`a[data-tab="${tabId}"]`);
+    var selectedTabContent = document.getElementById(tabId);
+    var selectedTab = document.querySelector('a[data-tab="' + tabId + '"]');
     selectedTabContent.style.display = 'flex';
     selectedTab.classList.add('active');
   }
 
   // Add click event listeners to the tabs
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', function () {
-      const tabId = this.getAttribute('data-tab');
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var tabId = this.getAttribute('data-tab');
       switchTab(tabId);
     });
   });
