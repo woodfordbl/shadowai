@@ -437,7 +437,9 @@ function addPlaceholders() {
     const textInput = document.getElementById(id);
 
     // Set the placeholder as initial content if it's empty
-    if (textInput.innerHTML === "") {
+    console.log(id)
+    console.log(textInput.innerHTML);
+    if (textInput.innerHTML === null) {
       textInput.innerHTML = placeholder;
     }
 
@@ -478,9 +480,7 @@ function submitOnEnter(elementIds) {
     }
   });
 }
-
-// Example usage
-var inputIds = ["generateInput", "explainInput", "vbaInput"]; // Provide the element IDs as an array
+var inputIds = ["generateInput", "explainInput", "vbaInput"];
 submitOnEnter(inputIds);
 
 function getCurrent() {
