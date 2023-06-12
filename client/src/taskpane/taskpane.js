@@ -50,11 +50,12 @@ document.addEventListener('DOMContentLoaded', function() {
 //#region Functions to load and display text
 
 // Loader element to display elipsis while waiting for GPT response
-let loadInterval;
+let loadInterval = null;
+
 function loader(element) {
   element.textContent = "";
 
-  loadInterval = setInterval(() => {
+  loadInterval = setInterval(function() {
     // Update the text content of the loading indicator
     element.textContent += ". ";
 
@@ -68,15 +69,15 @@ function loader(element) {
 function typeText(element, wrappedText) {
   let index = 0;
   let currentSpan = null;
-  
+
   if (wrappedText === undefined || wrappedText === "") {
     return;
   }
-  
-  let interval = setInterval(() => {
+
+  let interval = setInterval(function() {
     if (index < wrappedText.length) {
       const char = wrappedText.charAt(index);
-      
+
       if (char === "<" && wrappedText.charAt(index + 1) !== "/") {
         const closingBracketIndex = wrappedText.indexOf(">", index);
         if (closingBracketIndex !== -1) {
@@ -96,7 +97,7 @@ function typeText(element, wrappedText) {
       } else {
         element.innerHTML += char;
       }
-      
+
       index++;
     } else {
       clearInterval(interval);
@@ -128,43 +129,6 @@ function outputText(isAi, value, uniqueId) {
         `;
 }
 //#endregion
-
-/*
-  //#region Functions to track selected cells
-  
-  let selectedCells = "";
-  let isTrackingStarted = false;
-  
-  function trackSelectedCells() {
-    if (isTrackingStarted) {
-      return; // Exit if tracking has already started
-    }
-  
-    Office.onReady(() => {
-      Excel.run(async (context) => {
-        setInterval(async () => {
-          const sheet = context.workbook.worksheets.getActiveWorksheet();
-          const selection = context.workbook.getSelectedRange();
-          selection.load("address");
-  
-          await context.sync();
-  
-          const newSelectedCells = selection.address;
-          if (selectedCells !== newSelectedCells) {
-            selectedCells = newSelectedCells;
-          }
-        }, 500); // Adjust the interval as desired (e.g., every 500 milliseconds)
-      });
-    });
-  
-    isTrackingStarted = true;
-  }
-  
-  // Initialize the tracking of selected cells
-  trackSelectedCells();
-  
-  //#endregion
-  */
 
 //#region Functions to handle GPT querys
 
@@ -555,7 +519,7 @@ function wrapCellReferencesWithSpan(text) {
   const colors = ["#00A7E1", "#4094DE", "#6A7ED1", "#8A65BA", "#9F4999", "#A82B70"]; // List of colors
   const colorMap = {}; // Map to track assigned colors
 
-  const wrappedText = text.replace(cellReferenceRegex, (match) => {
+  const wrappedText = text.replace(cellReferenceRegex, function(match) {
     if (!colorMap[match]) {
       const colorIndex = Object.keys(colorMap).length % colors.length;
       colorMap[match] = colors[colorIndex];
