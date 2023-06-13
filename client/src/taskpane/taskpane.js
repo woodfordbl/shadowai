@@ -531,7 +531,6 @@ function wrapCellReferencesWithSpan(text) {
 }
 
 var hoveredElement = null;
-
 function handleHover(event) {
   hoveredElement = event.target;
 }
@@ -613,7 +612,6 @@ function handleKeyPress(event) {
     toggleCellReferenceFormat();
   }
 }
-
 // Register the event listeners
 document.addEventListener("mouseover", handleHover);
 document.addEventListener("keydown", handleKeyPress);
