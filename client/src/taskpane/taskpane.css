@@ -193,6 +193,8 @@ nav ul li a.active {
 
 .text-box {
   flex-grow: 1; /* Allow the textbox to grow to fill available horizontal space */
+  min-height: 35px;
+  max-height: 200px;
   margin: 3px;
   margin-bottom: 0px;
   padding: 5px;

@@ -1,8 +1,10 @@
+//#region Initializing Functions
 Office.onReady().then(function () {
   if (!Office.context.requirements.isSetSupported("ExcelApi", "1.7")) {
     console.log("Sorry, this add-in only works with newer versions of Excel.");
   }
 });
+//#endregion
 
 //#region Handle switching between tabs
 document.addEventListener("DOMContentLoaded", function () {
@@ -126,215 +128,6 @@ function outputText(isAi, value, uniqueId) {
 }
 //#endregion
 
-//#region Functions to handle GPT querys
-
-// Get GPT text from API
-async function getFormula(query) {
-  try {
-    const response = await fetch("https://testing-f03s.onrender.com/formula", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ prompt: query }),
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      return data.bot;
-    } else {
-      console.error("Error:", response.status);
-    }
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
-async function getExplain(query) {
-  try {
-    const response = await fetch("https://testing-f03s.onrender.com/explain", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ prompt: query }),
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      return data.bot;
-    } else {
-      console.error("Error:", response.status);
-    }
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
-async function getVBA(query) {
-  try {
-    const response = await fetch("https://testing-f03s.onrender.com/vba", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ prompt: query }),
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      return data.bot;
-    } else {
-      console.error("Error:", response.status);
-    }
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
-
-async function printText(event, id) {
-  event.preventDefault(); // Prevent form from submitting
-
-  // Get text from div
-  var textInput = document.getElementById(id);
-  var text = textInput.textContent.trim();
-
-  if (text === "" || text === "Write a formula that. . .") {
-    return;
-  }
-  // Clear output div
-  var divElement = document.getElementById("output");
-  divElement.innerHTML = "";
-
-  var uniqueId = generateUniqueId();
-
-  wrappedText = wrapCellReferencesWithSpan(text);
-  // Create HTML element from user text
-  var outputElement = document.getElementById("output");
-  var output = outputText(false, wrappedText, uniqueId);
-  outputElement.innerHTML += output;
-
-  // Clear the form after text entry
-  textInput.textContent = "";
-
-  // Pre-create HTML element for GPT text
-  outputElement.innerHTML += outputText(true, "", uniqueId);
-
-  // Get the pre-created HTML element and add loader element
-  const messageDiv = document.getElementById("output-" + uniqueId);
-  loader(messageDiv);
-  const gptResponse = (await getFormula(text)).trim(); // Get GPT text
-
-  // Check if '=' exists in the gptResponse
-  const equalIndex = gptResponse.indexOf("=");
-
-  if (equalIndex !== -1) {
-    // Remove text to the left of '='
-    const evaluatedText = gptResponse.slice(equalIndex).trim();
-
-    clearInterval(loadInterval);
-    messageDiv.innerHTML = "";
-
-    // Create HTML element from GPT text
-    typeText(messageDiv, wrapCellReferencesWithSpan(evaluatedText));
-  } else {
-    clearInterval(loadInterval);
-    messageDiv.innerHTML = "";
-
-    // Create HTML element from GPT text
-    typeText(messageDiv, wrapCellReferencesWithSpan(gptResponse));
-  }
-}
-async function explainFormula(event, id) {
-  event.preventDefault(); // Prevent form from submitting
-
-  // Get text from div
-  var textInput = document.getElementById(id);
-  var text = textInput.textContent.trim();
-
-  if (text === "" || text === "Explain a formula. . .") {
-    return;
-  }
-  // Clear output div
-  var divElement = document.getElementById("explain-output");
-  divElement.innerHTML = "";
-
-  var uniqueId = generateUniqueId();
-  wrappedText = wrapCellReferencesWithSpan(text);
-  // Create HTML element from user text
-  var outputElement = document.getElementById("explain-output");
-  var output = outputText(false, wrappedText, uniqueId);
-  outputElement.innerHTML += output;
-
-  // Clear the form after text entry
-  textInput.textContent = "";
-
-  // Pre-create HTML element for GPT text
-  outputElement.innerHTML += outputText(true, "", uniqueId);
-
-  // Get the pre-created HTML element and add loader element
-  const messageDiv = document.getElementById("output-" + uniqueId);
-  loader(messageDiv);
-  const gptResponse = (await getExplain(text)).trim(); // Get GPT text
-
-  // Check if '=' exists in the gptResponse
-  const equalIndex = gptResponse.indexOf("=");
-
-  if (equalIndex !== -1) {
-    // Remove text to the left of '='
-    const evaluatedText = gptResponse.slice(equalIndex).trim();
-
-    clearInterval(loadInterval);
-    messageDiv.innerHTML = "";
-
-    // Create HTML element from GPT text
-    typeText(messageDiv, wrapCellReferencesWithSpan(evaluatedText));
-  } else {
-    clearInterval(loadInterval);
-    messageDiv.innerHTML = "";
-
-    // Create HTML element from GPT text
-    typeText(messageDiv, wrapCellReferencesWithSpan(gptResponse));
-  }
-}
-async function vbaFormula(event, id) {
-  event.preventDefault(); // Prevent form from submitting
-
-  // Get text from div
-  var textInput = document.getElementById(id);
-  var text = textInput.textContent.trim();
-
-  // Output div
-  var outputElement = document.getElementById("code-output");
-
-  if (text === "" || text === "Generate a VBA macro that. . .") {
-    return;
-  }
-
-  // Clear output div and text input
-  textInput.innerHTML = "";
-  outputElement.innerHTML = "";
-
-  loader(outputElement);
-
-  gptResponse = await getVBA(text);
-
-  var regex = /```([\s\S]*?)```/;
-  var match = gptResponse.match(regex);
-
-  if (match) {
-    var result = match[1]; // Return the captured group
-  } else {
-    var result = gptResponse;
-  }
-
-  clearInterval(loadInterval);
-  outputElement.innerHTML = "";
-
-  result = formatCodeWithHLJS(result);
-
-  typeText(outputElement, result);
-}
-//#endregion
-
 //#region Functions to handle insert/retry button
 async function retryQuery(elementId) {
   inputElement = document.getElementById(elementId.replace("insert-", "input-"));
@@ -431,12 +224,10 @@ function autoResizeTextarea(textareaId) {
 
   textareaElement.addEventListener("input", function () {
     // Calculate the scroll height of the textareaElement content
-    const height = textareaElement.scrollHeight;
-    textareaElement.style.height = "1px";
-
-    const scrollHeight = textareaElement.scrollHeight;
-    console.log("scroll height:" + scrollHeight);
-    textareaElement.style.height = `${height}px`;
+    const height = textareaElement.scrollHeight; // Take exisiting height
+    textareaElement.style.height = "1px"; // Set the height to 1px
+    const scrollHeight = textareaElement.scrollHeight; // Measure scroll height
+    textareaElement.style.height = `${height}px`; // Set the height back to the original height
 
     // Check if the scroll height exceeds the maximum height
     if (scrollHeight > maxHeight) {
@@ -456,30 +247,10 @@ function autoResizeTextarea(textareaId) {
 // Format textarea elements
 document.addEventListener("DOMContentLoaded", function () {
 autoResizeTextarea("generateInput");
-});
+autoResizeTextarea("explainInput");
+autoResizeTextarea("vbaInput");
 
-// Submit when user hits enter
-function submitOnEnter(elementIds) {
-  elementIds.forEach(function (id) {
-    var element = document.getElementById(id);
-    if (element) {
-      element.addEventListener("keydown", function (event) {
-        if (event.key === "Enter" && !event.shiftKey) {
-          event.preventDefault();
-          if (id === "generateInput") {
-            printText(event, id);
-          } else if (id === "explainInput") {
-            explainFormula(event, id);
-          } else if (id === "vbaInput") {
-            vbaFormula(event, id);
-          }
-        }
-      });
-    }
-  });
-}
-var inputIds = ["generateInput", "explainInput", "vbaInput"];
-submitOnEnter(inputIds);
+});
 
 function getCurrent() {
   Excel.run(function (context) {
@@ -507,6 +278,217 @@ function refreshPage(id) {
   output.innerHTML = "";
 }
 
+//#endregion
+
+//#region Functions to handle GPT querys
+
+function processInput(id) {
+  // Get text from div
+  var textInput = document.getElementById(id);
+  if (textInput.tagName === "TEXTAREA") {
+  var text = textInput.value.trim();
+  } else if (textInput.tagName === "DIV") {
+    var text = textInput.textContent.trim();
+  } else {
+    return;
+  }
+  console.log(text);
+  if (text === "") {
+    return;
+  } else {
+    // Clear the form after text entry
+    textInput.value = "";
+    return text;
+}
+}
+
+async function getFormula(query) {
+  try {
+    const response = await fetch("https://testing-f03s.onrender.com/formula", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt: query }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data.bot;
+    } else {
+      console.error("Error:", response.status);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+async function getExplain(query) {
+  try {
+    const response = await fetch("https://testing-f03s.onrender.com/explain", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt: query }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data.bot;
+    } else {
+      console.error("Error:", response.status);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+async function getVBA(query) {
+  try {
+    const response = await fetch("https://testing-f03s.onrender.com/vba", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ prompt: query }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data.bot;
+    } else {
+      console.error("Error:", response.status);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+async function createFormula(event, id) {
+  event.preventDefault(); // Prevent form from submitting
+  text = processInput(id);
+
+  // Clear output div
+  var divElement = document.getElementById("output");
+  divElement.innerHTML = "";
+
+  var uniqueId = generateUniqueId();
+
+  wrappedText = wrapCellReferencesWithSpan(text);
+
+  // Create HTML element from user text
+  var outputElement = document.getElementById("output");
+  var output = outputText(false, wrappedText, uniqueId);
+  outputElement.innerHTML += output;
+
+  // Pre-create HTML element for GPT text
+  outputElement.innerHTML += outputText(true, "", uniqueId);
+
+  // Get the pre-created HTML element and add loader element
+  const messageDiv = document.getElementById("output-" + uniqueId);
+  loader(messageDiv);
+  const gptResponse = (await getFormula(text)).trim(); // Get GPT text
+
+  // Check if '=' exists in the gptResponse
+  const equalIndex = gptResponse.indexOf("=");
+
+  if (equalIndex !== -1) {
+    // Remove text to the left of '='
+    const evaluatedText = gptResponse.slice(equalIndex).trim();
+
+    clearInterval(loadInterval);
+    messageDiv.innerHTML = "";
+
+    // Create HTML element from GPT text
+    typeText(messageDiv, wrapCellReferencesWithSpan(evaluatedText));
+  } else {
+    clearInterval(loadInterval);
+    messageDiv.innerHTML = "";
+
+    // Create HTML element from GPT text
+    typeText(messageDiv, wrapCellReferencesWithSpan(gptResponse));
+  }
+}
+async function explainFormula(event, id) {
+  event.preventDefault(); // Prevent form from submitting
+  text = processInput(id);
+
+  // Get text from div
+  var textInput = document.getElementById(id);
+
+
+  // Clear output div
+  var divElement = document.getElementById("explain-output");
+  divElement.innerHTML = "";
+
+  var uniqueId = generateUniqueId();
+  wrappedText = wrapCellReferencesWithSpan(text);
+  // Create HTML element from user text
+  var outputElement = document.getElementById("explain-output");
+  var output = outputText(false, wrappedText, uniqueId);
+  outputElement.innerHTML += output;
+
+  // Clear the form after text entry
+  textInput.textContent = "";
+
+  // Pre-create HTML element for GPT text
+  outputElement.innerHTML += outputText(true, "", uniqueId);
+
+  // Get the pre-created HTML element and add loader element
+  const messageDiv = document.getElementById("output-" + uniqueId);
+  loader(messageDiv);
+  const gptResponse = (await getExplain(text)).trim(); // Get GPT text
+
+  // Check if '=' exists in the gptResponse
+  const equalIndex = gptResponse.indexOf("=");
+
+  if (equalIndex !== -1) {
+    // Remove text to the left of '='
+    const evaluatedText = gptResponse.slice(equalIndex).trim();
+
+    clearInterval(loadInterval);
+    messageDiv.innerHTML = "";
+
+    // Create HTML element from GPT text
+    typeText(messageDiv, wrapCellReferencesWithSpan(evaluatedText));
+  } else {
+    clearInterval(loadInterval);
+    messageDiv.innerHTML = "";
+
+    // Create HTML element from GPT text
+    typeText(messageDiv, wrapCellReferencesWithSpan(gptResponse));
+  }
+}
+async function vbaFormula(event, id) {
+  event.preventDefault(); // Prevent form from submitting
+
+  text = processInput(id);
+
+  // Output div
+  var outputElement = document.getElementById("code-output");
+
+  // Clear output div and text input
+  outputElement.innerHTML = "";
+
+  loader(outputElement);
+
+  gptResponse = await getVBA(text);
+
+  var regex = /```([\s\S]*?)```/;
+  var match = gptResponse.match(regex);
+
+  if (match) {
+    var result = match[1]; // Return the captured group
+  } else {
+    var result = gptResponse;
+  }
+
+  clearInterval(loadInterval);
+  outputElement.innerHTML = "";
+
+  result = formatCodeWithHLJS(result);
+
+  typeText(outputElement, result);
+}
 //#endregion
 
 //#region Functions to handle text and code formatting
