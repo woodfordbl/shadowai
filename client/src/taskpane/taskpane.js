@@ -1,4 +1,3 @@
-
 Office.onReady().then(function () {
   if (!Office.context.requirements.isSetSupported("ExcelApi", "1.7")) {
     console.log("Sorry, this add-in only works with newer versions of Excel.");
@@ -6,43 +5,40 @@ Office.onReady().then(function () {
 });
 
 //#region Handle switching between tabs
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
   // Store references to the tabs and tab contents
-  var tabs = document.querySelectorAll('.tab');
-  var tabContents = document.querySelectorAll('.tab-content');
-
-  console.log("tab: " + tabs);
-  console.log("tabcontents: " + tabContents);
+  var tabs = document.querySelectorAll(".tab");
+  var tabContents = document.querySelectorAll(".tab-content");
 
   // Function to switch tabs
   function switchTab(tabId) {
     // Hide all tab contents and deactivate all tabs
-    tabContents.forEach(function(tabContent) {
-      tabContent.style.display = 'none';
+    tabContents.forEach(function (tabContent) {
+      tabContent.style.display = "none";
     });
-    tabs.forEach(function(tab) {
-      tab.classList.remove('active');
+    tabs.forEach(function (tab) {
+      tab.classList.remove("active");
     });
 
     // Show the selected tab content and activate the corresponding tab
     var selectedTabContent = document.getElementById(tabId);
     var selectedTab = document.querySelector('a[data-tab="' + tabId + '"]');
-    selectedTabContent.style.display = 'flex';
-    selectedTab.classList.add('active');
+    selectedTabContent.style.display = "flex";
+    selectedTab.classList.add("active");
   }
 
   // Add click event listeners to the tabs
-  tabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      var tabId = this.getAttribute('data-tab');
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      var tabId = this.getAttribute("data-tab");
       switchTab(tabId);
     });
   });
 
   // Set the initial active tab
-  switchTab('TabCreate');
+  switchTab("TabCreate");
 });
 
 //#endregion
@@ -55,7 +51,7 @@ let loadInterval = null;
 function loader(element) {
   element.textContent = "";
 
-  loadInterval = setInterval(function() {
+  loadInterval = setInterval(function () {
     // Update the text content of the loading indicator
     element.textContent += ". ";
 
@@ -74,7 +70,7 @@ function typeText(element, wrappedText) {
     return;
   }
 
-  let interval = setInterval(function() {
+  let interval = setInterval(function () {
     if (index < wrappedText.length) {
       const char = wrappedText.charAt(index);
 
@@ -424,41 +420,43 @@ function copyElementToClipboard(elementId) {
 }
 //#endregion
 
-//#region Handle form inputs and buttons
-const placeholders = [
-  { id: "generateInput", placeholder: "Write a formula that. . ." },
-  { id: "explainInput", placeholder: "Explain a formula. . ." },
-  { id: "vbaInput", placeholder: "Generate a VBA macro that. . ." },
-];
+//#region Handle prompt inputs and buttons
+function autoResizeTextarea(textareaId) {
+  textareaElement = document.getElementById(textareaId);
 
-function addPlaceholders() {
-  placeholders.forEach(function (item) {
-    const { id, placeholder } = item;
-    const textInput = document.getElementById(id);
+  minHeight = getComputedStyle(textareaElement).minHeight;
+  maxHeight = getComputedStyle(textareaElement).maxHeight;
 
-    // Set the placeholder as initial content if it's empty
-    console.log(id)
-    console.log(textInput.innerHTML);
-    if (textInput.innerHTML === null) {
-      textInput.innerHTML = placeholder;
+  textareaElement.style.height = minHeight; // Set the initial height to the minimum height
+
+  textareaElement.addEventListener("input", function () {
+    // Calculate the scroll height of the textareaElement content
+    const height = textareaElement.scrollHeight;
+    textareaElement.style.height = "1px";
+
+    const scrollHeight = textareaElement.scrollHeight;
+    console.log("scroll height:" + scrollHeight);
+    textareaElement.style.height = `${height}px`;
+
+    // Check if the scroll height exceeds the maximum height
+    if (scrollHeight > maxHeight) {
+      textareaElement.style.overflowY = "scroll"; // Display the scrollbar
+      textareaElement.style.height = maxHeight; // Set the height to the maximum height
+    } else if (scrollHeight < minHeight) {
+      textareaElement.style.overflowY = "hidden"; // Hide the scrollbar
+      textareaElement.style.height = minHeight; // Set the height to fit the content
+    } else {
+      textareaElement.style.height = "1px";
+      textareaElement.style.height = textareaElement.scrollHeight + "px";
+      textareaElement.style.overflowY = "hidden"; // Hide the scrollbar
     }
-
-    textInput.addEventListener("focus", function (e) {
-      const value = e.target.innerHTML;
-      if (value === placeholder) {
-        e.target.innerHTML = "";
-      }
-    });
-
-    textInput.addEventListener("blur", function (e) {
-      const value = e.target.innerHTML;
-      if (value === "") {
-        e.target.innerHTML = placeholder;
-      }
-    });
   });
 }
-addPlaceholders();
+
+// Format textarea elements
+document.addEventListener("DOMContentLoaded", function () {
+autoResizeTextarea("generateInput");
+});
 
 // Submit when user hits enter
 function submitOnEnter(elementIds) {
@@ -519,7 +517,7 @@ function wrapCellReferencesWithSpan(text) {
   const colors = ["#00A7E1", "#4094DE", "#6A7ED1", "#8A65BA", "#9F4999", "#A82B70"]; // List of colors
   const colorMap = {}; // Map to track assigned colors
 
-  const wrappedText = text.replace(cellReferenceRegex, function(match) {
+  const wrappedText = text.replace(cellReferenceRegex, function (match) {
     if (!colorMap[match]) {
       const colorIndex = Object.keys(colorMap).length % colors.length;
       colorMap[match] = colors[colorIndex];
@@ -617,11 +615,11 @@ document.addEventListener("mouseover", handleHover);
 document.addEventListener("keydown", handleKeyPress);
 
 function formatCodeWithHLJS(code) {
-  var tempElement = document.createElement('div');
+  var tempElement = document.createElement("div");
   tempElement.innerHTML = code;
-  
+
   hljs.highlightBlock(tempElement);
-  
+
   return tempElement.innerHTML;
 }
 

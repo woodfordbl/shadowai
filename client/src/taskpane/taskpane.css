@@ -183,34 +183,25 @@ nav ul li a.active {
 .form-container {
   display: flex;
   flex-direction: row;
-  align-items: center; /* Center horizontally */
-  justify-content: center; /* Center horizontally */
-  flex-grow: 1; /* Allow the form container to grow to fill available vertical space */
-  margin: 20px auto; /* Optional margin for spacing */
+  align-items: end; 
+  justify-content: center;
+  flex-grow: 1;
+  margin: 20px auto; 
   width: 100%;
-  max-width: 500px; /* Set a maximum width of 500px */
+  max-width: 500px; 
 }
 
-
 .text-box {
-  flex: 1;
-  flex-shrink: 0;
-  max-width: 100%;
-  min-width: 170px;
-  height: auto;
-  min-height: 35px;
-  margin: 0px;
+  flex-grow: 1; /* Allow the textbox to grow to fill available horizontal space */
+  margin: 3px;
+  margin-bottom: 0px;
   padding: 5px;
-  padding-bottom: 3px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  overflow-y: auto;
-  resize: vertical;
-  font-size: medium;
-  text-justify: center;
+  border: 1px solid #cccccc;
   outline: none;
-  resize: none; /* Added to remove the resize handles */
+  border-radius: 5px;
+  font-size: 15px;
+  box-sizing: border-box;
+  resize: none;
 }
 
 /* Submit button */
@@ -225,11 +216,6 @@ nav ul li a.active {
   border-radius: 5px;
   cursor: pointer;
   flex-shrink: 0;
-}
-
-
-.editable:empty:before {
-  content: attr(data-placeholder);
 }
 
 .refresh,.current{
