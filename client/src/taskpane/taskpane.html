@@ -59,7 +59,7 @@
           </div>
         </div>
         <div class="form-container">
-          <textarea type="submit" id="generateInput" class="text-box" placeholder="Send a message. . ."></textarea>
+          <textarea type="submit" id="generateInput" class="text-box" placeholder="Send a message. . ." style="min-height: 35px; max-height: 200px"></textarea>
           <button id="button-textInput" title="Send" type="submit" class="form-button" onclick="createFormula(event,'generateInput')">
             <i class="fa fa-paper-plane fa-lg"></i>
           </button>
@@ -70,7 +70,7 @@
       <div id="TabExplain" class="tab-content">
         <div id="explain-output"></div>
         <div class="form-container">
-          <textarea type="submit" id="explainInput" class="text-box" placeholder="Explain a formula. . ."></textarea>
+          <textarea type="submit" id="explainInput" class="text-box" placeholder="Explain a formula. . ." style="min-height: 35px; max-height: 200px"></textarea>
           <button id="button-textInput" title="Send" type="submit" class="form-button" onclick="explainFormula(event, 'explainInput')">
             <i class="fa fa-paper-plane fa-lg"></i>
           </button>
@@ -96,7 +96,7 @@
           </div>
         </div>
         <div class="form-container">
-          <textarea type="submit" id="vbaInput" class="text-box" placeholder="Explain a formula. . ."></textarea>
+          <textarea type="submit" id="vbaInput" class="text-box" placeholder="Create VBA. . ." style="min-height: 35px; max-height: 200px"></textarea>
           <button id="button-textInput" title="Send" type="submit" class="form-button" onclick="vbaFormula(event, 'vbaInput')"><i class="fa fa-paper-plane fa-lg"></i></i></button>
           <button type="submit" title="Insert Current Cell Formula" class="form-button current" onclick="getCurrent()"><i class="fas fa-arrow-down"></i></button>
           <button type="submit" title="Refresh Page" class="form-button refresh" onclick="refreshPage('code-output')"><i class="fa fa-retweet"></i></button>
