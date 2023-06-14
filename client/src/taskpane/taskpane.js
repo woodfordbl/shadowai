@@ -7,41 +7,44 @@ Office.onReady().then(function () {
 //#endregion
 
 //#region Handle switching between tabs
-document.addEventListener("DOMContentLoaded", function () {
-  "use strict";
 
-  // Store references to the tabs and tab contents
-  var tabs = document.querySelectorAll(".tab");
-  var tabContents = document.querySelectorAll(".tab-content");
-
-  // Function to switch tabs
-  function switchTab(tabId) {
-    // Hide all tab contents and deactivate all tabs
-    tabContents.forEach(function (tabContent) {
-      tabContent.style.display = "none";
-    });
-    tabs.forEach(function (tab) {
-      tab.classList.remove("active");
-    });
-
-    // Show the selected tab content and activate the corresponding tab
-    var selectedTabContent = document.getElementById(tabId);
-    var selectedTab = document.querySelector('a[data-tab="' + tabId + '"]');
-    selectedTabContent.style.display = "flex";
-    selectedTab.classList.add("active");
-  }
-
-  // Add click event listeners to the tabs
+function switchTab(tabs, tabContents, tabId) {
+  // Hide all tab contents and deactivate all tabs
+  tabContents.forEach(function (tabContent) {
+    tabContent.style.display = "none";
+  });
   tabs.forEach(function (tab) {
-    tab.addEventListener("click", function () {
-      var tabId = this.getAttribute("data-tab");
-      switchTab(tabId);
-    });
+    tab.classList.remove("active");
   });
 
-  // Set the initial active tab
-  switchTab("TabCreate");
-});
+  // Show the selected tab content and activate the corresponding tab
+  var selectedTabContent = document.getElementById(tabId);
+  var selectedTab = document.querySelector('a[data-tab="' + tabId + '"]');
+  selectedTabContent.style.display = "flex";
+  selectedTab.classList.add("active");
+}
+
+function loadAndSwitchTabs() {
+  document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
+  
+    // Store references to the tabs and tab contents
+    var tabs = document.querySelectorAll(".tab");
+    var tabContents = document.querySelectorAll(".tab-content");
+  
+    // Add click event listeners to the tabs
+    tabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var tabId = this.getAttribute("data-tab");
+        switchTab(tabs, tabContents, tabId);
+      });
+    });
+  
+    // Set the initial active tab
+    switchTab(tabs, tabContents, "TabCreate");
+  });
+}
+loadAndSwitchTabs();
 
 //#endregion
 
@@ -128,7 +131,7 @@ function outputText(isAi, value, uniqueId) {
 }
 //#endregion
 
-//#region Functions to handle insert/retry button
+//#region Functions to handle output insert/retry button
 async function retryQuery(elementId) {
   inputElement = document.getElementById(elementId.replace("insert-", "input-"));
   outputElement = document.getElementById("output-" + elementId.replace("insert-", ""));
@@ -213,7 +216,7 @@ function copyElementToClipboard(elementId) {
 }
 //#endregion
 
-//#region Handle prompt inputs and buttons
+//#region Handle footer inputs and buttons
 function autoResizeTextarea(textareaIds) {
   textareaIds.forEach(function (textareaId) {
     var textarea = document.getElementById(textareaId);
@@ -289,7 +292,6 @@ function getCurrent() {
 function refreshApp() {
   location.reload();
 }
-
 function refreshPage(id) {
   output = document.getElementById(id);
   output.innerHTML = "";
