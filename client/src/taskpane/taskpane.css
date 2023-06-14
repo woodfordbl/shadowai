@@ -313,3 +313,29 @@ button {
   padding-left: 20px;
   background-color: #fff;
 }
+
+/* Explain Output Boxes */
+
+.explain-container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+.explain-row {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.explain-button {
+  max-width: 200px;
+  min-width: 50px;
+  max-height: 100px;
+  overflow-y: hidden;
+}
