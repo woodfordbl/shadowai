@@ -214,43 +214,60 @@ function copyElementToClipboard(elementId) {
 //#endregion
 
 //#region Handle prompt inputs and buttons
-function autoResizeTextarea(textareaId) {
-  textareaElement = document.getElementById(textareaId);
+function autoResizeTextarea(textareaIds) {
+  textareaIds.forEach(function (textareaId) {
+    var textarea = document.getElementById(textareaId);
 
-  minHeight = getComputedStyle(textareaElement).minHeight;
-  maxHeight = getComputedStyle(textareaElement).maxHeight;
+    var minHeight = getComputedStyle(textarea).height.replace(/px$/, "");
+    var maxHeight = getComputedStyle(textarea).maxHeight.replace(/px$/, "");
 
-  textareaElement.style.height = minHeight; // Set the initial height to the minimum height
+    textarea.addEventListener("input", function (event) {
+      // Calculate the scroll height of the textarea content
+      textarea.style.height = "1px";
+      var scrollHeight = textarea.scrollHeight;
 
-  textareaElement.addEventListener("input", function () {
-    // Calculate the scroll height of the textareaElement content
-    const height = textareaElement.scrollHeight; // Take exisiting height
-    textareaElement.style.height = "1px"; // Set the height to 1px
-    const scrollHeight = textareaElement.scrollHeight; // Measure scroll height
-    textareaElement.style.height = `${height}px`; // Set the height back to the original height
-
-    // Check if the scroll height exceeds the maximum height
-    if (scrollHeight > maxHeight) {
-      textareaElement.style.overflowY = "scroll"; // Display the scrollbar
-      textareaElement.style.height = maxHeight; // Set the height to the maximum height
-    } else if (scrollHeight < minHeight) {
-      textareaElement.style.overflowY = "hidden"; // Hide the scrollbar
-      textareaElement.style.height = minHeight; // Set the height to fit the content
-    } else {
-      textareaElement.style.height = "1px";
-      textareaElement.style.height = textareaElement.scrollHeight + "px";
-      textareaElement.style.overflowY = "hidden"; // Hide the scrollbar
-    }
+      // Check if the scroll height exceeds the maximum height
+      if (scrollHeight > maxHeight) {
+        textarea.style.overflowY = "scroll"; // Display the scrollbar
+        textarea.style.height = maxHeight + "px"; // Set the height to the maximum height
+      } else if (scrollHeight < minHeight) {
+        textarea.style.overflowY = "hidden"; // Hide the scrollbar
+        textarea.style.height = minHeight + "px"; // Set the height to fit the content
+      } else {
+        textarea.style.overflowY = "hidden"; // Hide the scrollbar
+        textarea.style.height = scrollHeight + "px"; // Set the height to fit the content
+      }
+    });
   });
 }
 
 // Format textarea elements
 document.addEventListener("DOMContentLoaded", function () {
-autoResizeTextarea("generateInput");
-autoResizeTextarea("explainInput");
-autoResizeTextarea("vbaInput");
-
+  autoResizeTextarea(["generateInput", "explainInput", "vbaInput"]); // Pass an array of textarea IDs
 });
+
+function submitOnEnter(elementIds) {
+  elementIds.forEach(function (id) {
+    var element = document.getElementById(id);
+    if (element) {
+      element.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" && !event.shiftKey) {
+          event.preventDefault();
+          if (id === "generateInput") {
+            createFormula(event, id);
+          } else if (id === "explainInput") {
+            explainFormula(event, id);
+          } else if (id === "vbaInput") {
+            vbaFormula(event, id);
+          }
+        }
+      });
+    }
+  });
+}
+
+var inputIds = ["generateInput", "explainInput", "vbaInput"]; // Provide the element IDs as an array
+submitOnEnter(inputIds);
 
 function getCurrent() {
   Excel.run(function (context) {
@@ -286,7 +303,7 @@ function processInput(id) {
   // Get text from div
   var textInput = document.getElementById(id);
   if (textInput.tagName === "TEXTAREA") {
-  var text = textInput.value.trim();
+    var text = textInput.value.trim();
   } else if (textInput.tagName === "DIV") {
     var text = textInput.textContent.trim();
   } else {
@@ -299,7 +316,7 @@ function processInput(id) {
     // Clear the form after text entry
     textInput.value = "";
     return text;
-}
+  }
 }
 
 async function getFormula(query) {
@@ -414,7 +431,6 @@ async function explainFormula(event, id) {
 
   // Get text from div
   var textInput = document.getElementById(id);
-
 
   // Clear output div
   var divElement = document.getElementById("explain-output");
