@@ -319,14 +319,15 @@ button {
 .explain-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
   width: 100%;
-  height: 100%;
-  padding: 10px;
+  height: 50vh;
+  margin-top: 70px;
 }
 .explain-row {
   width: 100%;
-  height: 30%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
