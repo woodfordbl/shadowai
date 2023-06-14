@@ -265,7 +265,6 @@ function submitOnEnter(elementIds) {
     }
   });
 }
-
 var inputIds = ["generateInput", "explainInput", "vbaInput"]; // Provide the element IDs as an array
 submitOnEnter(inputIds);
 
@@ -508,6 +507,7 @@ async function vbaFormula(event, id) {
 //#endregion
 
 //#region Functions to handle text and code formatting
+
 function wrapCellReferencesWithSpan(text) {
   const cellReferenceRegex = /\$?[A-Za-z]+\$?\d+(?::\$?[A-Za-z]+\$?\d+)?/g;
   const cellReferences = text.match(cellReferenceRegex);
