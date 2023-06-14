@@ -1,4 +1,0 @@
-env:
-  NODE_ENV: production
-buildCommand: npm install --only=prod
-startCommand: node server.js
