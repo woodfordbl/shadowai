@@ -68,7 +68,44 @@
       </div>
 
       <div id="TabExplain" class="tab-content">
-        <div id="explain-output"></div>
+        <div id="explain-output">
+          <div class="explain-container">
+            <div class="explain-row">
+              <div class="box-button explain-button">
+                <div id="explain1" class="box-content" onclick="explainFormula(event,'explain1')">
+                  =HLOOKUP(
+                  <span class="cell-reference" style="color: #00A7E1">A2</span>, 
+                  <span class="cell-reference" style="color: #4094DE">A1:E5</span>, 3, FALSE)?</div>
+              </div>
+              <div class="box-button explain-button">
+                <div id="explain2" class="box-content" onclick="explainFormula(event,'explain2')">How does the MODE.MULT formula work?</div>
+              </div>
+            </div>
+            <div class="explain-row">
+              <div class="box-button explain-button">
+                <div id="explain3" class="box-content" onclick="explainFormula(event,'explain3')">How does the NPER function calculate the number of periods?</div>
+              </div>
+              <div class="box-button explain-button">
+                <div id="explain4" class="box-content" onclick="explainFormula(event,'explain4')">
+                  What does the XIRR formula do in this example: =XIRR(
+                  <span class="cell-reference" style="color: #00A7E1">B2:B7</span>, 
+                  <span class="cell-reference" style="color: #4094DE">A2:A7</span>)?
+                </div>
+              </div>
+            </div>
+            <div class="explain-row">
+              <div class="box-button explain-button">
+                <div id="explain5" class="box-content" onclick="explainFormula(event,'explain5')">How does the SUBTOTAL function work?</div>
+              </div>
+              <div class="box-button explain-button">
+                <div id="explain6" class="box-content" onclick="explainFormula(event,'explain6')">
+                  What does =FV(
+                  <span class="cell-reference" style="color: #00A7E1">A2</span>, <span class="cell-reference" style="color: #4094DE">B2</span>,-<span class="cell-reference" style="color: #6A7ED1">C2</span>,-<span class="cell-reference" style="color: #8A65BA">D2</span>) calculate?
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="form-container">
           <textarea type="submit" id="explainInput" class="text-box" placeholder="Explain a formula. . ." style="height: 35px; max-height: 200px; overflow-y: hidden"></textarea>
           <button id="button-textInput" title="Send" type="submit" class="form-button" onclick="explainFormula(event, 'explainInput')">
