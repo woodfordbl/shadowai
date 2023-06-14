@@ -72,12 +72,12 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://shadowai-paj5.onrender.com/client/src/taskpane/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
+        <bt:String id="GetStarted.Title" DefaultValue="Get started with Shadow-Ai!"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Shadow-Ai Taskpane"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Shadow-Ai add-in loaded succesfully. Go to the HOME tab and click the 'Shadow-Ai Taskpane' button to get started."/>
+        <bt:String id="GetStarted.Description" DefaultValue="Shadow-Ai add-in loaded succesfully. Go to the HOME tab and click the 'Shadow-Ai Taskpane' button to start."/>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show Shadow-Ai"/>
       </bt:LongStrings>
     </Resources>
