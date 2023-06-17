@@ -4,6 +4,7 @@ Office.onReady().then(function () {
     console.log("Sorry, this add-in only works with newer versions of Excel.");
   }
 });
+  
 //#endregion
 
 //#region Handle switching between tabs
