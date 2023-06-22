@@ -87,6 +87,22 @@
       "webRoot": "${workspaceRoot}",
       "preLaunchTask": "Debug: Word Desktop",
       "postDebugTask": "Stop Debug"
-    }
+    },
+    {
+      "name": "Middle Tier (launch and attach)",
+      "type": "node",
+      "request": "attach",
+      "port": 8080,
+      "timeout": 600000,
+      "preLaunchTask": "Debug: Desktop",
+      "postDebugTask": "Stop Debug"
+    },
+    {
+      "name": "Middle Tier (attach to existing)",
+      "type": "node",
+      "request": "attach",
+      "port": 8080,
+      "timeout": 600000
+    },
   ]
 }
