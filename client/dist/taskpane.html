@@ -8,9 +8,9 @@
 
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
-    <script type="text/javascript" src="1d7d28e88c42cc4fd2e0.js"></script>
+    <script type="text/javascript" src="d2beb420260c13867b6d.js"></script>
 
-    <link href="00ece89f755df696706f.css" rel="stylesheet" type="text/css" />
+    <link href="b03efe976598002b7e2a.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -23,7 +23,7 @@
             <li><a class="tab active" data-tab="TabCreate">Create</a></li>
             <li><a class="tab" data-tab="TabExplain">Explain</a></li>
             <li><a class="tab" data-tab="TabVBAI">VB-Ai</a></li>
-            <li><a title="Help" href="https://shadowai.webflow.io/help"><i class="fas fa-cog fa-lg"></i></i></a></li>
+            <li><a class="tab" data-tab="TabSettings"><i class="fas fa-cog fa-lg"></i></i></a></li>
           </ul>
         </nav>
       </div>
@@ -59,7 +59,7 @@
           </div>
         </div>
         <div class="form-container">
-          <textarea type="submit" id="generateInput" class="text-box" placeholder="Send a message. . ." style="height: 35px; max-height: 200px; overflow-y: hidden"></textarea>
+          <textarea type="submit" id="generateInput" class="text-box" placeholder="Create a formula. . ." style="height: 35px; max-height: 200px; overflow-y: hidden"></textarea>
           <button id="generateInput-button" title="Send" type="submit" class="form-button">
             <i class="fa fa-paper-plane fa-lg"></i>
           </button>
@@ -79,7 +79,7 @@
                   <span class="cell-reference" style="color: #4094DE">A1:E5</span>, 3, FALSE)?</div>
               </div>
               <div class="box-button explain-button">
-                <div id="explain2" class="box-content">How does the MODE.MULT formula work?</div>
+                <div id="explain2" class="box-content">How does =MODE.MULT(<span class="cell-reference" style="color: #00A7E1">A1:A10</span>) work?</div>
               </div>
             </div>
             <div class="explain-row">
@@ -116,6 +116,7 @@
           <button id="explain-refresh" type="submit" title="Refresh Page" class="form-button refresh"><i class="fa fa-retweet"></i></button>
         </div>
       </div>
+
       <div id="TabVBAI" class="tab-content">
         <div class="container">
           <div class="code-container">
@@ -138,6 +139,41 @@
           <button id="button-vbaInput" title="Send" type="submit" class="form-button"><i class="fa fa-paper-plane fa-lg"></i></i></button>
           <button id="vba-current" type="submit" title="Insert Current Cell Formula" class="form-button current"><i class="fas fa-arrow-down"></i></button>
           <button id="vba-refresh" type="submit" title="Refresh Page" class="form-button refresh"><i class="fa fa-retweet"></i></button>
+        </div>
+      </div>
+
+      <div id="TabSettings" class="tab-content">
+        <div class="settings-container">
+          <div class="settings-header">
+            <div id="settings-title">Settings</div>
+          </div>
+          <div id="profile" class="settings-box">
+            <div class="settings-box-title">Profile</div>
+            <div class="settings-section">
+              <div class="settings-item-title">Email:</div>
+              <div class="settings-item-content">
+                <textarea id="signup-email" type="email" placeholder="Email"></textarea>
+                <button id="auth-button" title="Send" type="submit" class="settings-button">Verify</button>
+                <button id="deauth-button" title="Send" type="submit" class="settings-button">Deactivate</button>
+                <div id="auth-status"></div>
+              </div>
+            </div>
+          </div>
+          <div id="help" class="settings-box">
+            <div class="settings-box-title">Help</div>
+            <div class="settings-section">
+              <div class="settings-item-title">Website</div>
+              <div class="settings-item-content">
+                <a class="settings-button" href="https://shadowai.webflow.io/">Go to Website</a>
+              </div>
+            </div>
+            <div class="settings-section">
+              <div class="settings-item-title">Email</div>
+              <div class="settings-item-content">
+                <a class="settings-button" href="mailto: help@shadow-ai.com">help@shadow-ai.com</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>

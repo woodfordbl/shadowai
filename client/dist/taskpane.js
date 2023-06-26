@@ -32145,7 +32145,7 @@ return jQuery;
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 "use strict";
-module.exports = __webpack_require__.p + "1d7d28e88c42cc4fd2e0.js";
+module.exports = __webpack_require__.p + "d2beb420260c13867b6d.js";
 
 /***/ }),
 
@@ -32156,7 +32156,7 @@ module.exports = __webpack_require__.p + "1d7d28e88c42cc4fd2e0.js";
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 "use strict";
-module.exports = __webpack_require__.p + "00ece89f755df696706f.css";
+module.exports = __webpack_require__.p + "b03efe976598002b7e2a.css";
 
 /***/ })
 
@@ -32304,6 +32304,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_sso_helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/sso-helper */ "./src/helpers/sso-helper.js");
 /* harmony import */ var _helpers_documentHelper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../helpers/documentHelper */ "./src/helpers/documentHelper.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _readOnlyError(name) { throw new TypeError("\"" + name + "\" is read-only"); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator.return && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, catch: function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -32311,10 +32312,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
  * Copyright (c) Blake Woodford. All rights reserved. Licensed under the MIT license.
  */
 
+// #region Imports
 
 
 var auth = null; // Auth token storage
+var verifiedEmail = null; // Signup Email storage
+var currentMSEmail = null; // Microsoft Email storage
+//#endregion
 
+// #region Initialize Office
 Office.onReady(function (info) {
   if (!Office.context.requirements.isSetSupported("ExcelApi", "1.7")) {
     // Check if Excel version is supported
@@ -32324,8 +32330,21 @@ Office.onReady(function (info) {
     (0,_helpers_sso_helper__WEBPACK_IMPORTED_MODULE_0__.getUserProfile)(checkMSVerification); // Check if user is verified on startup
   }
 });
+// #endregion
 
 //#region User Verifications
+
+function updateEmail(id, email) {
+  // TODO: Update the email address in the settings of the task pane
+  var textarea = document.getElementById(id);
+  textarea.placeholder = email;
+  verifiedEmail = email; //updates global value
+  var button = document.getElementById("auth-button");
+  button.style.backgroundColor = "#a1a1a1";
+  button.style.cursor = "default";
+  console.log("Email updated.");
+  return;
+}
 
 // Sends verification packet to server to verify on Microsoft Email || Input: Microsoft Email || Output: JSON Verification Packet
 function sendMSVerifyPacket(_x) {
@@ -32380,7 +32399,7 @@ function _sendMSVerifyPacket() {
 }
 function checkMSVerification(_x2) {
   return _checkMSVerification.apply(this, arguments);
-} // TODO: Verify user input email in settings page
+}
 function _checkMSVerification() {
   _checkMSVerification = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(result) {
     var msEmail, verificationStatus;
@@ -32388,28 +32407,39 @@ function _checkMSVerification() {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           msEmail = (0,_helpers_documentHelper__WEBPACK_IMPORTED_MODULE_1__.filterUserProfileInfo)(result)[0];
-          _context2.next = 3;
-          return sendMSVerifyPacket(msEmail);
-        case 3:
-          verificationStatus = _context2.sent;
-          if (verificationStatus) {
+          if (!(msEmail === null)) {
             _context2.next = 6;
             break;
           }
+          console.log("No Microsoft Email");
           return _context2.abrupt("return");
         case 6:
+          currentMSEmail = msEmail;
+        case 7:
+          _context2.next = 9;
+          return sendMSVerifyPacket(msEmail);
+        case 9:
+          verificationStatus = _context2.sent;
+          if (verificationStatus) {
+            _context2.next = 12;
+            break;
+          }
+          return _context2.abrupt("return");
+        case 12:
           if (!verificationStatus.verification) {
-            _context2.next = 11;
+            _context2.next = 17;
             break;
           }
           // On success, update authtoken and stored email
           auth = verificationStatus.authToken;
-          updateEmail(verificationStatus.value);
-          _context2.next = 12;
+          updateEmail("signup-email", verificationStatus.stripeEmail);
+          _context2.next = 19;
           break;
-        case 11:
+        case 17:
+          // TODO: Handle unverified user
+          console.log("User not verified on MS Email");
           return _context2.abrupt("return");
-        case 12:
+        case 19:
         case "end":
           return _context2.stop();
       }
@@ -32419,7 +32449,7 @@ function _checkMSVerification() {
 }
 function verifyUser(_x3) {
   return _verifyUser.apply(this, arguments);
-} // TODO: Update the email address in the settings of the task pane
+}
 function _verifyUser() {
   _verifyUser = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(signUpEmail) {
     var response, data;
@@ -32434,7 +32464,8 @@ function _verifyUser() {
               "Content-Type": "application/json"
             },
             body: JSON.stringify({
-              email: signUpEmail
+              email: signUpEmail,
+              msEmail: currentMSEmail
             })
           });
         case 3:
@@ -32447,7 +32478,7 @@ function _verifyUser() {
           return response.json();
         case 7:
           data = _context3.sent;
-          return _context3.abrupt("return", data.bot);
+          return _context3.abrupt("return", data);
         case 11:
           console.error("Error:", response.status);
         case 12:
@@ -32465,13 +32496,158 @@ function _verifyUser() {
   }));
   return _verifyUser.apply(this, arguments);
 }
-function updateEmail(email) {
-  // TODO: Update the email address in the settings of the task pane
+function authenticateUser(_x4, _x5) {
+  return _authenticateUser.apply(this, arguments);
 }
-
-//#endregion
-
+function _authenticateUser() {
+  _authenticateUser = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(emailId, statusId) {
+    var signUpEmail, status, verificationPacket;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
+        case 0:
+          if (verifiedEmail === null) {
+            _context4.next = 3;
+            break;
+          }
+          console.log("User already authenticated");
+          return _context4.abrupt("return");
+        case 3:
+          signUpEmail = document.getElementById(emailId).value;
+          status = document.getElementById(statusId);
+          if (!(signUpEmail === "")) {
+            _context4.next = 8;
+            break;
+          }
+          status.value = "Please enter an email address.";
+          return _context4.abrupt("return");
+        case 8:
+          _context4.prev = 8;
+          _context4.next = 11;
+          return verifyUser(signUpEmail);
+        case 11:
+          verificationPacket = _context4.sent;
+          if (!verificationPacket.verification) {
+            _context4.next = 19;
+            break;
+          }
+          // On success, update authtoken and stored email
+          auth = verificationPacket.authToken;
+          updateEmail(emailId, signUpEmail);
+          status.value = verificationPacket.verificationMessage;
+          return _context4.abrupt("return");
+        case 19:
+          status.value = verificationPacket.verificationMessage;
+          return _context4.abrupt("return");
+        case 21:
+          _context4.next = 28;
+          break;
+        case 23:
+          _context4.prev = 23;
+          _context4.t0 = _context4["catch"](8);
+          console.error("Error:", _context4.t0);
+          status.value = "Unable to verify email, please try again.";
+          return _context4.abrupt("return");
+        case 28:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4, null, [[8, 23]]);
+  }));
+  return _authenticateUser.apply(this, arguments);
+}
+function sendDeAuth(_x6) {
+  return _sendDeAuth.apply(this, arguments);
+}
+function _sendDeAuth() {
+  _sendDeAuth = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(emailId) {
+    var response, data;
+    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+      while (1) switch (_context5.prev = _context5.next) {
+        case 0:
+          if (!(verifiedEmail === null || currentMSEmail === undefined)) {
+            _context5.next = 3;
+            break;
+          }
+          console.log("No current user");
+          return _context5.abrupt("return", {
+            message: "No current user"
+          });
+        case 3:
+          _context5.prev = 3;
+          _context5.next = 6;
+          return fetch("https://testing-f03s.onrender.com/deauth-user", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              email: verifiedEmail,
+              msEmail: currentMSEmail,
+              authToken: auth
+            })
+          });
+        case 6:
+          response = _context5.sent;
+          if (!response.ok) {
+            _context5.next = 18;
+            break;
+          }
+          _context5.next = 10;
+          return response.json();
+        case 10:
+          data = _context5.sent;
+          auth = null;
+          verifiedEmail = null;
+          document.getElementById(emailId).value = "";
+          document.getElementById(emailId).placeholder = "Email";
+          return _context5.abrupt("return", data);
+        case 18:
+          console.error("Error:", response.status);
+          return _context5.abrupt("return", {
+            message: "Unable to deauthenticate user, please try again."
+          });
+        case 20:
+          _context5.next = 26;
+          break;
+        case 22:
+          _context5.prev = 22;
+          _context5.t0 = _context5["catch"](3);
+          console.error("Error:", _context5.t0);
+          return _context5.abrupt("return", {
+            message: "Unable to deauthenticate user, please try again."
+          });
+        case 26:
+        case "end":
+          return _context5.stop();
+      }
+    }, _callee5, null, [[3, 22]]);
+  }));
+  return _sendDeAuth.apply(this, arguments);
+}
+function deAuthenticateUser(_x7, _x8) {
+  return _deAuthenticateUser.apply(this, arguments);
+} //#endregion
 //#region Handle switching between tabs
+function _deAuthenticateUser() {
+  _deAuthenticateUser = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(emailId, statusId) {
+    var deauthpacket, status;
+    return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+      while (1) switch (_context6.prev = _context6.next) {
+        case 0:
+          _context6.next = 2;
+          return sendDeAuth(emailId);
+        case 2:
+          deauthpacket = _context6.sent;
+          status = document.getElementById(statusId);
+          deauthpacket.message, _readOnlyError("status");
+        case 5:
+        case "end":
+          return _context6.stop();
+      }
+    }, _callee6);
+  }));
+  return _deAuthenticateUser.apply(this, arguments);
+}
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
@@ -32526,7 +32702,7 @@ function loader(element) {
     }
   }, 300);
 }
-function typeText(element, wrappedText) {
+function typeText(element, wrappedText, uniqueId, type) {
   var index = 0;
   var currentSpan = null;
   if (wrappedText === undefined || wrappedText === "") {
@@ -32559,6 +32735,14 @@ function typeText(element, wrappedText) {
       clearInterval(interval);
     }
   }, 20);
+  if (uniqueId !== undefined) {
+    document.getElementById("insert-".concat(uniqueId)).addEventListener("click", function () {
+      insertFormula("insert-".concat(uniqueId));
+    });
+    document.getElementById("retry-".concat(uniqueId)).addEventListener("click", function () {
+      retryQuery(uniqueId, type);
+    });
+  }
 }
 function generateUniqueId() {
   var timestamp = Date.now();
@@ -32567,35 +32751,63 @@ function generateUniqueId() {
   return "".concat(timestamp, "-").concat(hexadecimalString);
 }
 function outputText(isAi, value, uniqueId) {
-  return "\n        <div class=\"wrapper ".concat(isAi && "ai", "\">\n            <div class=\"chat\">\n                <div class=\"profile\">").concat(isAi ? "🥷" : "👤", "</div>\n                <div class=\"message ").concat(isAi && "ai-message", "\" id=").concat(isAi ? "output-" : "input-").concat(uniqueId, ">").concat(value, "</div>\n                ").concat(isAi ? "<button id=\"insert-".concat(uniqueId, "\" title=\"Paste into Current Cell\" class=\"insert\" onclick=\"insertFormula(this.id)\"><i class=\"fas fa-clipboard\"></i></button>") : "<button id=\"insert-".concat(uniqueId, "\" title=\"Resend\" class=\"insert\" onclick=\"retryQuery(this.id)\"><i class=\"fas fa-redo\"></i></button>"), "\n            </div>\n        </div>\n        ");
+  return "\n        <div class=\"wrapper ".concat(isAi && "ai", "\">\n            <div class=\"chat\">\n                <div class=\"profile\">").concat(isAi ? "🥷" : "👤", "</div>\n                <div class=\"message ").concat(isAi && "ai-message", "\" id=").concat(isAi ? "output-" : "input-").concat(uniqueId, ">").concat(value, "</div>\n                ").concat(isAi ? "<button id=\"insert-".concat(uniqueId, "\" title=\"Paste into Current Cell\" class=\"insert\"><i class=\"fas fa-clipboard\"></i></button>") : "<button id=\"retry-".concat(uniqueId, "\" title=\"Resend\" class=\"insert\"><i class=\"fas fa-redo\"></i></button>"), "\n            </div>\n        </div>\n        ");
 }
 //#endregion
 
 //#region Functions to handle insert/retry button
-function retryQuery(_x4) {
+function retryQuery(_x9, _x10) {
   return _retryQuery.apply(this, arguments);
 }
 function _retryQuery() {
-  _retryQuery = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(elementId) {
-    var gptResponse, equalIndex, evaluatedText;
-    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-      while (1) switch (_context4.prev = _context4.next) {
+  _retryQuery = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(elementId, type) {
+    var inputElement, outputElement, gptResponse, equalIndex, evaluatedText;
+    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+      while (1) switch (_context7.prev = _context7.next) {
         case 0:
-          inputElement = document.getElementById(elementId.replace("insert-", "input-"));
-          outputElement = document.getElementById("output-" + elementId.replace("insert-", ""));
-
-          // Clear output div
+          if (!(elementId === undefined)) {
+            _context7.next = 2;
+            break;
+          }
+          return _context7.abrupt("return");
+        case 2:
+          if (!(type === undefined)) {
+            _context7.next = 4;
+            break;
+          }
+          return _context7.abrupt("return");
+        case 4:
+          inputElement = document.getElementById("input-" + elementId);
+          outputElement = document.getElementById("output-" + elementId); // Clear output div
           outputElement.innerHTML = "";
 
           // Initiate Loader
           loader(outputElement);
-
-          // Get new GPT text
-          _context4.next = 6;
-          return getGPT(inputElement.textContent.trim());
-        case 6:
-          gptResponse = _context4.sent.trim();
-          // Get GPT text
+          gptResponse = ""; // Get new GPT text
+          if (!(type === "formula")) {
+            _context7.next = 15;
+            break;
+          }
+          _context7.next = 12;
+          return getFormula(inputElement.textContent.trim());
+        case 12:
+          gptResponse = _context7.sent.trim();
+          _context7.next = 22;
+          break;
+        case 15:
+          if (!(type === "explain")) {
+            _context7.next = 21;
+            break;
+          }
+          _context7.next = 18;
+          return getExplain(inputElement.textContent.trim());
+        case 18:
+          gptResponse = _context7.sent.trim();
+          _context7.next = 22;
+          break;
+        case 21:
+          return _context7.abrupt("return");
+        case 22:
           // Check if '=' exists in the gptResponse
           equalIndex = gptResponse.indexOf("=");
           if (equalIndex !== -1) {
@@ -32613,11 +32825,11 @@ function _retryQuery() {
             // Create HTML element from GPT text
             typeText(outputElement, wrapCellReferencesWithSpan(gptResponse));
           }
-        case 9:
+        case 24:
         case "end":
-          return _context4.stop();
+          return _context7.stop();
       }
-    }, _callee4);
+    }, _callee7);
   }));
   return _retryQuery.apply(this, arguments);
 }
@@ -32732,17 +32944,26 @@ function getCurrent() {
     console.error(error);
   });
 }
-function refreshApp() {
-  location.reload();
-}
-function refreshPage(id) {
+var generateHTML, explainHTML, vbaHTML;
+document.addEventListener("DOMContentLoaded", function (event) {
+  generateHTML = document.getElementById("output").innerHTML;
+  explainHTML = document.getElementById("explain-output").innerHTML;
+  vbaHTML = document.getElementById("code-output").innerHTML;
+});
+function refreshPage(id, htmlTag) {
   output = document.getElementById(id);
-  output.innerHTML = "";
+  output.innerHTML = htmlTag;
+  if (htmlTag === explainHTML) {
+    initializeExplainButtons();
+  }
+  if (htmlTag === generateHTML) {
+    initializeGenerateButtons();
+  }
 }
 
 //#endregion
 
-//#region Functions to handle server querys || TODO: Move to separate file, add AUTH token handling
+//#region Functions to handle server querys || TODO: Move to separate file
 
 // Process user input from textarea elements
 function processInput(id) {
@@ -32755,7 +32976,6 @@ function processInput(id) {
   } else {
     return;
   }
-  console.log(text);
   if (text === "") {
     return;
   } else {
@@ -32766,17 +32986,17 @@ function processInput(id) {
 }
 
 // Create a formula from user input
-function getFormula(_x5) {
+function getFormula(_x11) {
   return _getFormula.apply(this, arguments);
 } // Explain a formula from user input
 function _getFormula() {
-  _getFormula = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(query) {
+  _getFormula = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(query) {
     var response, data;
-    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-      while (1) switch (_context5.prev = _context5.next) {
+    return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+      while (1) switch (_context8.prev = _context8.next) {
         case 0:
-          _context5.prev = 0;
-          _context5.next = 3;
+          _context8.prev = 0;
+          _context8.next = 3;
           return fetch("https://testing-f03s.onrender.com/formula", {
             method: "POST",
             headers: {
@@ -32788,44 +33008,44 @@ function _getFormula() {
             })
           });
         case 3:
-          response = _context5.sent;
+          response = _context8.sent;
           if (!response.ok) {
-            _context5.next = 11;
+            _context8.next = 11;
             break;
           }
-          _context5.next = 7;
+          _context8.next = 7;
           return response.json();
         case 7:
-          data = _context5.sent;
-          return _context5.abrupt("return", data.bot);
+          data = _context8.sent;
+          return _context8.abrupt("return", data.bot);
         case 11:
           console.error("Error:", response.status);
         case 12:
-          _context5.next = 17;
+          _context8.next = 17;
           break;
         case 14:
-          _context5.prev = 14;
-          _context5.t0 = _context5["catch"](0);
-          console.error("Error:", _context5.t0);
+          _context8.prev = 14;
+          _context8.t0 = _context8["catch"](0);
+          console.error("Error:", _context8.t0);
         case 17:
         case "end":
-          return _context5.stop();
+          return _context8.stop();
       }
-    }, _callee5, null, [[0, 14]]);
+    }, _callee8, null, [[0, 14]]);
   }));
   return _getFormula.apply(this, arguments);
 }
-function getExplain(_x6) {
+function getExplain(_x12) {
   return _getExplain.apply(this, arguments);
 } // Get VBA file from user input
 function _getExplain() {
-  _getExplain = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(query) {
+  _getExplain = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(query) {
     var response, data;
-    return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-      while (1) switch (_context6.prev = _context6.next) {
+    return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+      while (1) switch (_context9.prev = _context9.next) {
         case 0:
-          _context6.prev = 0;
-          _context6.next = 3;
+          _context9.prev = 0;
+          _context9.next = 3;
           return fetch("https://testing-f03s.onrender.com/explain", {
             method: "POST",
             headers: {
@@ -32837,44 +33057,44 @@ function _getExplain() {
             })
           });
         case 3:
-          response = _context6.sent;
+          response = _context9.sent;
           if (!response.ok) {
-            _context6.next = 11;
+            _context9.next = 11;
             break;
           }
-          _context6.next = 7;
+          _context9.next = 7;
           return response.json();
         case 7:
-          data = _context6.sent;
-          return _context6.abrupt("return", data.bot);
+          data = _context9.sent;
+          return _context9.abrupt("return", data.bot);
         case 11:
           console.error("Error:", response.status);
         case 12:
-          _context6.next = 17;
+          _context9.next = 17;
           break;
         case 14:
-          _context6.prev = 14;
-          _context6.t0 = _context6["catch"](0);
-          console.error("Error:", _context6.t0);
+          _context9.prev = 14;
+          _context9.t0 = _context9["catch"](0);
+          console.error("Error:", _context9.t0);
         case 17:
         case "end":
-          return _context6.stop();
+          return _context9.stop();
       }
-    }, _callee6, null, [[0, 14]]);
+    }, _callee9, null, [[0, 14]]);
   }));
   return _getExplain.apply(this, arguments);
 }
-function getVBA(_x7) {
+function getVBA(_x13) {
   return _getVBA.apply(this, arguments);
 }
 function _getVBA() {
-  _getVBA = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(query) {
+  _getVBA = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(query) {
     var response, data;
-    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-      while (1) switch (_context7.prev = _context7.next) {
+    return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+      while (1) switch (_context10.prev = _context10.next) {
         case 0:
-          _context7.prev = 0;
-          _context7.next = 3;
+          _context10.prev = 0;
+          _context10.next = 3;
           return fetch("https://testing-f03s.onrender.com/vba", {
             method: "POST",
             headers: {
@@ -32886,41 +33106,41 @@ function _getVBA() {
             })
           });
         case 3:
-          response = _context7.sent;
+          response = _context10.sent;
           if (!response.ok) {
-            _context7.next = 11;
+            _context10.next = 11;
             break;
           }
-          _context7.next = 7;
+          _context10.next = 7;
           return response.json();
         case 7:
-          data = _context7.sent;
-          return _context7.abrupt("return", data.bot);
+          data = _context10.sent;
+          return _context10.abrupt("return", data.bot);
         case 11:
           console.error("Error:", response.status);
         case 12:
-          _context7.next = 17;
+          _context10.next = 17;
           break;
         case 14:
-          _context7.prev = 14;
-          _context7.t0 = _context7["catch"](0);
-          console.error("Error:", _context7.t0);
+          _context10.prev = 14;
+          _context10.t0 = _context10["catch"](0);
+          console.error("Error:", _context10.t0);
         case 17:
         case "end":
-          return _context7.stop();
+          return _context10.stop();
       }
-    }, _callee7, null, [[0, 14]]);
+    }, _callee10, null, [[0, 14]]);
   }));
   return _getVBA.apply(this, arguments);
 }
-function createFormula(_x8) {
+function createFormula(_x14) {
   return _createFormula.apply(this, arguments);
 }
 function _createFormula() {
-  _createFormula = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(id) {
+  _createFormula = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(id) {
     var text, divElement, uniqueId, wrappedText, outputElement, output, messageDiv, gptResponse, equalIndex, evaluatedText;
-    return _regeneratorRuntime().wrap(function _callee8$(_context8) {
-      while (1) switch (_context8.prev = _context8.next) {
+    return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+      while (1) switch (_context11.prev = _context11.next) {
         case 0:
           text = processInput(id); // Clear output div
           divElement = document.getElementById("output");
@@ -32937,10 +33157,10 @@ function _createFormula() {
           // Get the pre-created HTML element and add loader element
           messageDiv = document.getElementById("output-" + uniqueId);
           loader(messageDiv);
-          _context8.next = 13;
+          _context11.next = 13;
           return getFormula(text);
         case 13:
-          gptResponse = _context8.sent.trim();
+          gptResponse = _context11.sent.trim();
           // Get GPT text
           // Check if '=' exists in the gptResponse
           equalIndex = gptResponse.indexOf("=");
@@ -32951,30 +33171,30 @@ function _createFormula() {
             messageDiv.innerHTML = "";
 
             // Create HTML element from GPT text
-            typeText(messageDiv, wrapCellReferencesWithSpan(evaluatedText));
+            typeText(messageDiv, wrapCellReferencesWithSpan(evaluatedText), uniqueId, "formula");
           } else {
             clearInterval(loadInterval);
             messageDiv.innerHTML = "";
 
             // Create HTML element from GPT text
-            typeText(messageDiv, wrapCellReferencesWithSpan(gptResponse));
+            typeText(messageDiv, wrapCellReferencesWithSpan(gptResponse), uniqueId, "formula");
           }
         case 16:
         case "end":
-          return _context8.stop();
+          return _context11.stop();
       }
-    }, _callee8);
+    }, _callee11);
   }));
   return _createFormula.apply(this, arguments);
 }
-function explainFormula(_x9) {
+function explainFormula(_x15) {
   return _explainFormula.apply(this, arguments);
 }
 function _explainFormula() {
-  _explainFormula = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(id) {
+  _explainFormula = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(id) {
     var text, textInput, divElement, uniqueId, wrappedText, outputElement, output, messageDiv, gptResponse, equalIndex, evaluatedText;
-    return _regeneratorRuntime().wrap(function _callee9$(_context9) {
-      while (1) switch (_context9.prev = _context9.next) {
+    return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+      while (1) switch (_context12.prev = _context12.next) {
         case 0:
           text = processInput(id); // Get text from div
           textInput = document.getElementById(id); // Clear output div
@@ -32995,10 +33215,10 @@ function _explainFormula() {
           // Get the pre-created HTML element and add loader element
           messageDiv = document.getElementById("output-" + uniqueId);
           loader(messageDiv);
-          _context9.next = 15;
+          _context12.next = 15;
           return getExplain(text);
         case 15:
-          gptResponse = _context9.sent.trim();
+          gptResponse = _context12.sent.trim();
           // Get GPT text
           // Check if '=' exists in the gptResponse
           equalIndex = gptResponse.indexOf("=");
@@ -33009,40 +33229,40 @@ function _explainFormula() {
             messageDiv.innerHTML = "";
 
             // Create HTML element from GPT text
-            typeText(messageDiv, wrapCellReferencesWithSpan(evaluatedText));
+            typeText(messageDiv, wrapCellReferencesWithSpan(evaluatedText), uniqueId, "explain");
           } else {
             clearInterval(loadInterval);
             messageDiv.innerHTML = "";
 
             // Create HTML element from GPT text
-            typeText(messageDiv, wrapCellReferencesWithSpan(gptResponse));
+            typeText(messageDiv, wrapCellReferencesWithSpan(gptResponse), uniqueId, "explain");
           }
         case 18:
         case "end":
-          return _context9.stop();
+          return _context12.stop();
       }
-    }, _callee9);
+    }, _callee12);
   }));
   return _explainFormula.apply(this, arguments);
 }
-function vbaFormula(_x10) {
+function vbaFormula(_x16) {
   return _vbaFormula.apply(this, arguments);
 } //#endregion
 //#region Functions to handle text and code formatting
 function _vbaFormula() {
-  _vbaFormula = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(id) {
+  _vbaFormula = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(id) {
     var text, outputElement, gptResponse, regex, match, result;
-    return _regeneratorRuntime().wrap(function _callee10$(_context10) {
-      while (1) switch (_context10.prev = _context10.next) {
+    return _regeneratorRuntime().wrap(function _callee13$(_context13) {
+      while (1) switch (_context13.prev = _context13.next) {
         case 0:
           text = processInput(id); // Output div
           outputElement = document.getElementById("code-output"); // Clear output div and text input
           outputElement.innerHTML = "";
           loader(outputElement);
-          _context10.next = 6;
+          _context13.next = 6;
           return getVBA(text);
         case 6:
-          gptResponse = _context10.sent;
+          gptResponse = _context13.sent;
           regex = /```([\s\S]*?)```/;
           match = gptResponse.match(regex);
           if (match) {
@@ -33056,9 +33276,9 @@ function _vbaFormula() {
           typeText(outputElement, result);
         case 14:
         case "end":
-          return _context10.stop();
+          return _context13.stop();
       }
-    }, _callee10);
+    }, _callee13);
   }));
   return _vbaFormula.apply(this, arguments);
 }
@@ -33177,45 +33397,52 @@ function formatCode() {
 formatCode();
 //#endregion
 
-//#region Button Clicks || TODO: Migrate from onclick() to addEventListener()
+//#region Button Clicks || TODO: Debug each button
 
 // –––––––––– Example buttons –––––––––––
-document.getElementById("button-rec1").addEventListener("click", function () {
-  // Create: Example
-  createFormula("rec1");
-});
-document.getElementById("button-rec2").addEventListener("click", function () {
-  // Create: Example
-  createFormula("rec2");
-});
-document.getElementById("button-rec3").addEventListener("click", function () {
-  // Create: Example
-  createFormula("rec3");
-});
-document.getElementById("explain1").addEventListener("click", function () {
-  // Explain: Example
-  explainFormula("explain1");
-});
-document.getElementById("explain2").addEventListener("click", function () {
-  // Explain: Example
-  explainFormula("explain2");
-});
-document.getElementById("explain3").addEventListener("click", function () {
-  // Explain: Example
-  explainFormula("explain3");
-});
-document.getElementById("explain4").addEventListener("click", function () {
-  // Explain: Example
-  explainFormula("explain4");
-});
-document.getElementById("explain5").addEventListener("click", function () {
-  // Explain: Example
-  explainFormula("explain5");
-});
-document.getElementById("explain6").addEventListener("click", function () {
-  // Explain: Example
-  explainFormula("explain6");
-});
+
+function initializeGenerateButtons() {
+  document.getElementById("button-rec1").addEventListener("click", function () {
+    // Create: Example
+    createFormula("rec1");
+  });
+  document.getElementById("button-rec2").addEventListener("click", function () {
+    // Create: Example
+    createFormula("rec2");
+  });
+  document.getElementById("button-rec3").addEventListener("click", function () {
+    // Create: Example
+    createFormula("rec3");
+  });
+}
+initializeGenerateButtons();
+function initializeExplainButtons() {
+  document.getElementById("explain1").addEventListener("click", function () {
+    // Explain: Example
+    explainFormula("explain1");
+  });
+  document.getElementById("explain2").addEventListener("click", function () {
+    // Explain: Example
+    explainFormula("explain2");
+  });
+  document.getElementById("explain3").addEventListener("click", function () {
+    // Explain: Example
+    explainFormula("explain3");
+  });
+  document.getElementById("explain4").addEventListener("click", function () {
+    // Explain: Example
+    explainFormula("explain4");
+  });
+  document.getElementById("explain5").addEventListener("click", function () {
+    // Explain: Example
+    explainFormula("explain5");
+  });
+  document.getElementById("explain6").addEventListener("click", function () {
+    // Explain: Example
+    explainFormula("explain6");
+  });
+}
+initializeExplainButtons();
 
 // –––––––––– Input buttons –––––––––––
 document.getElementById("generateInput-button").addEventListener("click", function () {
@@ -33232,15 +33459,15 @@ document.getElementById("button-vbaInput").addEventListener("click", function ()
 });
 document.getElementById("generate-refresh").addEventListener("click", function () {
   // Generate: Refresh App
-  refreshApp();
+  refreshPage("output", generateHTML);
 });
 document.getElementById("explain-refresh").addEventListener("click", function () {
   // Explain: Refresh App
-  refreshPage("explain-output");
+  refreshPage("explain-output", explainHTML);
 });
 document.getElementById("vba-refresh").addEventListener("click", function () {
   // VBA: Refresh App
-  refreshPage("code-output");
+  refreshPage("code-output", vbaHTML);
 });
 document.getElementById("explain-current").addEventListener("click", function () {
   // Explain: Get Current
@@ -33257,6 +33484,26 @@ document.getElementById("vba-copy").addEventListener("click", function () {
   copyElementToClipboard("code-output");
 });
 
+// –––––––––– Authentication buttons –––––––––––
+var emailTextarea = document.getElementById("signup-email");
+emailTextarea.addEventListener("focus", function () {
+  var placeholder = emailTextarea.placeholder;
+  if (emailTextarea.value === "") {
+    emailTextarea.value = placeholder;
+  }
+});
+emailTextarea.addEventListener("blur", function () {
+  var placeholder = emailTextarea.placeholder;
+  if (emailTextarea.value === placeholder) {
+    emailTextarea.value = "";
+  }
+});
+document.getElementById("auth-button").addEventListener("click", function () {
+  authenticateUser("signup-email", "auth-status");
+});
+document.getElementById("deauth-button").addEventListener("click", function () {
+  deAuthenticateUser("signup-email", "auth-status");
+});
 //#endregion
 }();
 // This entry need to be wrapped in an IIFE because it need to be in strict mode.
@@ -33275,7 +33522,7 @@ var ___HTML_LOADER_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(
 // Module
 var ___HTML_LOADER_REPLACEMENT_0___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_0___);
 var ___HTML_LOADER_REPLACEMENT_1___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_1___);
-var code = "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>Shadow-Ai</title>\n\n    <" + "script type=\"text/javascript\" src=\"https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js\"><" + "/script>\n    <" + "script src=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js\"><" + "/script>\n    <" + "script type=\"text/javascript\" src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\"><" + "/script>\n\n    <link href=\"" + ___HTML_LOADER_REPLACEMENT_1___ + "\" rel=\"stylesheet\" type=\"text/css\" />\n    <link rel=\"stylesheet\" href=\"https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css\"/>\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css\" />\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css\" />\n  </head>\n  <body>\n    <header>\n      <div class=\"navbar-wrapper\">\n        <nav>\n          <ul>\n            <li><a class=\"tab active\" data-tab=\"TabCreate\">Create</a></li>\n            <li><a class=\"tab\" data-tab=\"TabExplain\">Explain</a></li>\n            <li><a class=\"tab\" data-tab=\"TabVBAI\">VB-Ai</a></li>\n            <li><a title=\"Help\" href=\"https://shadowai.webflow.io/help\"><i class=\"fas fa-cog fa-lg\"></i></i></a></li>\n          </ul>\n        </nav>\n      </div>\n    </header>\n\n    <main id=\"app-body\">\n      <div id=\"TabCreate\" class=\"tab-content active\">\n        <div id=\"output\">\n          <div class=\"button-container\">\n            <div id=\"output-title\">Examples</div>\n            <div id=\"button-rec1\" class=\"box-button\">\n              <div id=\"rec1\" class=\"box-content\">\n                For first names in <span class=\"cell-reference\" style=\"color: #00a7e1\">A1:A15</span> and lastnames in\n                <span class=\"cell-reference\" style=\"color: #4094de\">B1:B15</span> Retrieve a first name based on a given\n                last name in cell <span class=\"cell-reference\" style=\"color: #6a7ed1\">C1</span>\n              </div>\n            </div>\n            <div id=\"button-rec2\" class=\"box-button\">\n              <div id=\"rec2\" class=\"box-content\">\n                Create a formula that finds the most frequent value in the array\n                <span class=\"cell-reference\" style=\"color: #00a7e1\">A1:C15</span>\n              </div>\n            </div>\n            <div id=\"button-rec3\" class=\"box-button\">\n              <div id=\"rec3\" class=\"box-content\">\n                Generate a formula that calculates the present value of an annuity with variable growth rates based on\n                cash flow in <span class=\"cell-reference\" style=\"color: #00a7e1\">B1:B10</span>, growth rates\n                corresponding to each cash flow in <span class=\"cell-reference\" style=\"color: #4094de\">C1:C10</span>,\n                and the number of periods for each cash flow in column\n                <span class=\"cell-reference\" style=\"color: #6a7ed1\">A1:A10</span>\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"form-container\">\n          <textarea type=\"submit\" id=\"generateInput\" class=\"text-box\" placeholder=\"Send a message. . .\" style=\"height: 35px; max-height: 200px; overflow-y: hidden\"></textarea>\n          <button id=\"generateInput-button\" title=\"Send\" type=\"submit\" class=\"form-button\">\n            <i class=\"fa fa-paper-plane fa-lg\"></i>\n          </button>\n          <button id=\"generate-refresh\" type=\"submit\" title=\"Refresh App\" class=\"form-button refresh\"><i class=\"fa fa-retweet\"></i></button>\n        </div>\n      </div>\n\n      <div id=\"TabExplain\" class=\"tab-content\">\n        <div id=\"explain-output\">\n          <div class=\"explain-container\">\n            <div id=\"output-title\">Examples</div>\n            <div class=\"explain-row\">\n              <div class=\"box-button explain-button\">\n                <div id=\"explain1\" class=\"box-content\">\n                  =HLOOKUP(\n                  <span class=\"cell-reference\" style=\"color: #00A7E1\">A2</span>, \n                  <span class=\"cell-reference\" style=\"color: #4094DE\">A1:E5</span>, 3, FALSE)?</div>\n              </div>\n              <div class=\"box-button explain-button\">\n                <div id=\"explain2\" class=\"box-content\">How does the MODE.MULT formula work?</div>\n              </div>\n            </div>\n            <div class=\"explain-row\">\n              <div class=\"box-button explain-button\">\n                <div id=\"explain3\" class=\"box-content\">How does the NPER function calculate the number of periods?</div>\n              </div>\n              <div class=\"box-button explain-button\">\n                <div id=\"explain4\" class=\"box-content\">\n                  What does the XIRR formula do in this example: =XIRR(\n                  <span class=\"cell-reference\" style=\"color: #00A7E1\">B2:B7</span>, \n                  <span class=\"cell-reference\" style=\"color: #4094DE\">A2:A7</span>)?\n                </div>\n              </div>\n            </div>\n            <div class=\"explain-row\">\n              <div class=\"box-button explain-button\">\n                <div id=\"explain5\" class=\"box-content\">How does the SUBTOTAL function work?</div>\n              </div>\n              <div class=\"box-button explain-button\">\n                <div id=\"explain6\" class=\"box-content\">\n                  What does =FV(\n                  <span class=\"cell-reference\" style=\"color: #00A7E1\">A2</span>, <span class=\"cell-reference\" style=\"color: #4094DE\">B2</span>,-<span class=\"cell-reference\" style=\"color: #6A7ED1\">C2</span>,-<span class=\"cell-reference\" style=\"color: #8A65BA\">D2</span>) calculate?\n                </div>\n              </div>\n            </div>\n         </div>\n        </div>\n        <div class=\"form-container\">\n          <textarea type=\"submit\" id=\"explainInput\" class=\"text-box\" placeholder=\"Explain a formula. . .\" style=\"height: 35px; max-height: 200px; overflow-y: hidden\"></textarea>\n          <button id=\"button-explainInput\" title=\"Send\" type=\"submit\" class=\"form-button\">\n            <i class=\"fa fa-paper-plane fa-lg\"></i>\n          </button>\n          <button id=\"explain-current\" type=\"submit\" title=\"Insert Current Cell Formula\" class=\"form-button current\" ><i class=\"fas fa-arrow-down\"></i></button>\n          <button id=\"explain-refresh\" type=\"submit\" title=\"Refresh Page\" class=\"form-button refresh\"><i class=\"fa fa-retweet\"></i></button>\n        </div>\n      </div>\n      <div id=\"TabVBAI\" class=\"tab-content\">\n        <div class=\"container\">\n          <div class=\"code-container\">\n            <div class=\"code-header\">\n              <div class=\"code-text-left\"><span class=\"code-title\">Visual Basic</span></div>\n              <div class=\"code-buttons\">\n                <button id=\"vba-copy\" class=\"code-button\" title=\"Copy\"><i class=\"fas fa-copy fa-lg\"></i></button>\n              </div>\n            </div>\n            <div class=\"code-content\">\n              <pre id=\"code-pre\">\n                <code id=\"code-output\" class=\"hljs Visual Basic\">\n                </code>\n              </pre>\n            </div>\n          </div>\n        </div>\n        <div class=\"form-container\">\n          <textarea type=\"submit\" id=\"vbaInput\" class=\"text-box\" placeholder=\"Create VBA. . .\" style=\"height: 35px; max-height: 200px; overflow-y: hidden\"></textarea>\n          <button id=\"button-vbaInput\" title=\"Send\" type=\"submit\" class=\"form-button\"><i class=\"fa fa-paper-plane fa-lg\"></i></i></button>\n          <button id=\"vba-current\" type=\"submit\" title=\"Insert Current Cell Formula\" class=\"form-button current\"><i class=\"fas fa-arrow-down\"></i></button>\n          <button id=\"vba-refresh\" type=\"submit\" title=\"Refresh Page\" class=\"form-button refresh\"><i class=\"fa fa-retweet\"></i></button>\n        </div>\n      </div>\n    </main>\n  </body>\n</html>\n";
+var code = "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"UTF-8\" />\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>Shadow-Ai</title>\n\n    <" + "script type=\"text/javascript\" src=\"https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js\"><" + "/script>\n    <" + "script src=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js\"><" + "/script>\n    <" + "script type=\"text/javascript\" src=\"" + ___HTML_LOADER_REPLACEMENT_0___ + "\"><" + "/script>\n\n    <link href=\"" + ___HTML_LOADER_REPLACEMENT_1___ + "\" rel=\"stylesheet\" type=\"text/css\" />\n    <link rel=\"stylesheet\" href=\"https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css\"/>\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css\" />\n    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css\" />\n  </head>\n  <body>\n    <header>\n      <div class=\"navbar-wrapper\">\n        <nav>\n          <ul>\n            <li><a class=\"tab active\" data-tab=\"TabCreate\">Create</a></li>\n            <li><a class=\"tab\" data-tab=\"TabExplain\">Explain</a></li>\n            <li><a class=\"tab\" data-tab=\"TabVBAI\">VB-Ai</a></li>\n            <li><a class=\"tab\" data-tab=\"TabSettings\"><i class=\"fas fa-cog fa-lg\"></i></i></a></li>\n          </ul>\n        </nav>\n      </div>\n    </header>\n\n    <main id=\"app-body\">\n      <div id=\"TabCreate\" class=\"tab-content active\">\n        <div id=\"output\">\n          <div class=\"button-container\">\n            <div id=\"output-title\">Examples</div>\n            <div id=\"button-rec1\" class=\"box-button\">\n              <div id=\"rec1\" class=\"box-content\">\n                For first names in <span class=\"cell-reference\" style=\"color: #00a7e1\">A1:A15</span> and lastnames in\n                <span class=\"cell-reference\" style=\"color: #4094de\">B1:B15</span> Retrieve a first name based on a given\n                last name in cell <span class=\"cell-reference\" style=\"color: #6a7ed1\">C1</span>\n              </div>\n            </div>\n            <div id=\"button-rec2\" class=\"box-button\">\n              <div id=\"rec2\" class=\"box-content\">\n                Create a formula that finds the most frequent value in the array\n                <span class=\"cell-reference\" style=\"color: #00a7e1\">A1:C15</span>\n              </div>\n            </div>\n            <div id=\"button-rec3\" class=\"box-button\">\n              <div id=\"rec3\" class=\"box-content\">\n                Generate a formula that calculates the present value of an annuity with variable growth rates based on\n                cash flow in <span class=\"cell-reference\" style=\"color: #00a7e1\">B1:B10</span>, growth rates\n                corresponding to each cash flow in <span class=\"cell-reference\" style=\"color: #4094de\">C1:C10</span>,\n                and the number of periods for each cash flow in column\n                <span class=\"cell-reference\" style=\"color: #6a7ed1\">A1:A10</span>\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"form-container\">\n          <textarea type=\"submit\" id=\"generateInput\" class=\"text-box\" placeholder=\"Create a formula. . .\" style=\"height: 35px; max-height: 200px; overflow-y: hidden\"></textarea>\n          <button id=\"generateInput-button\" title=\"Send\" type=\"submit\" class=\"form-button\">\n            <i class=\"fa fa-paper-plane fa-lg\"></i>\n          </button>\n          <button id=\"generate-refresh\" type=\"submit\" title=\"Refresh App\" class=\"form-button refresh\"><i class=\"fa fa-retweet\"></i></button>\n        </div>\n      </div>\n\n      <div id=\"TabExplain\" class=\"tab-content\">\n        <div id=\"explain-output\">\n          <div class=\"explain-container\">\n            <div id=\"output-title\">Examples</div>\n            <div class=\"explain-row\">\n              <div class=\"box-button explain-button\">\n                <div id=\"explain1\" class=\"box-content\">\n                  =HLOOKUP(\n                  <span class=\"cell-reference\" style=\"color: #00A7E1\">A2</span>, \n                  <span class=\"cell-reference\" style=\"color: #4094DE\">A1:E5</span>, 3, FALSE)?</div>\n              </div>\n              <div class=\"box-button explain-button\">\n                <div id=\"explain2\" class=\"box-content\">How does =MODE.MULT(<span class=\"cell-reference\" style=\"color: #00A7E1\">A1:A10</span>) work?</div>\n              </div>\n            </div>\n            <div class=\"explain-row\">\n              <div class=\"box-button explain-button\">\n                <div id=\"explain3\" class=\"box-content\">How does the NPER function calculate the number of periods?</div>\n              </div>\n              <div class=\"box-button explain-button\">\n                <div id=\"explain4\" class=\"box-content\">\n                  What does the XIRR formula do in this example: =XIRR(\n                  <span class=\"cell-reference\" style=\"color: #00A7E1\">B2:B7</span>, \n                  <span class=\"cell-reference\" style=\"color: #4094DE\">A2:A7</span>)?\n                </div>\n              </div>\n            </div>\n            <div class=\"explain-row\">\n              <div class=\"box-button explain-button\">\n                <div id=\"explain5\" class=\"box-content\">How does the SUBTOTAL function work?</div>\n              </div>\n              <div class=\"box-button explain-button\">\n                <div id=\"explain6\" class=\"box-content\">\n                  What does =FV(\n                  <span class=\"cell-reference\" style=\"color: #00A7E1\">A2</span>, <span class=\"cell-reference\" style=\"color: #4094DE\">B2</span>,-<span class=\"cell-reference\" style=\"color: #6A7ED1\">C2</span>,-<span class=\"cell-reference\" style=\"color: #8A65BA\">D2</span>) calculate?\n                </div>\n              </div>\n            </div>\n         </div>\n        </div>\n        <div class=\"form-container\">\n          <textarea type=\"submit\" id=\"explainInput\" class=\"text-box\" placeholder=\"Explain a formula. . .\" style=\"height: 35px; max-height: 200px; overflow-y: hidden\"></textarea>\n          <button id=\"button-explainInput\" title=\"Send\" type=\"submit\" class=\"form-button\">\n            <i class=\"fa fa-paper-plane fa-lg\"></i>\n          </button>\n          <button id=\"explain-current\" type=\"submit\" title=\"Insert Current Cell Formula\" class=\"form-button current\" ><i class=\"fas fa-arrow-down\"></i></button>\n          <button id=\"explain-refresh\" type=\"submit\" title=\"Refresh Page\" class=\"form-button refresh\"><i class=\"fa fa-retweet\"></i></button>\n        </div>\n      </div>\n\n      <div id=\"TabVBAI\" class=\"tab-content\">\n        <div class=\"container\">\n          <div class=\"code-container\">\n            <div class=\"code-header\">\n              <div class=\"code-text-left\"><span class=\"code-title\">Visual Basic</span></div>\n              <div class=\"code-buttons\">\n                <button id=\"vba-copy\" class=\"code-button\" title=\"Copy\"><i class=\"fas fa-copy fa-lg\"></i></button>\n              </div>\n            </div>\n            <div class=\"code-content\">\n              <pre id=\"code-pre\">\n                <code id=\"code-output\" class=\"hljs Visual Basic\">\n                </code>\n              </pre>\n            </div>\n          </div>\n        </div>\n        <div class=\"form-container\">\n          <textarea type=\"submit\" id=\"vbaInput\" class=\"text-box\" placeholder=\"Create VBA. . .\" style=\"height: 35px; max-height: 200px; overflow-y: hidden\"></textarea>\n          <button id=\"button-vbaInput\" title=\"Send\" type=\"submit\" class=\"form-button\"><i class=\"fa fa-paper-plane fa-lg\"></i></i></button>\n          <button id=\"vba-current\" type=\"submit\" title=\"Insert Current Cell Formula\" class=\"form-button current\"><i class=\"fas fa-arrow-down\"></i></button>\n          <button id=\"vba-refresh\" type=\"submit\" title=\"Refresh Page\" class=\"form-button refresh\"><i class=\"fa fa-retweet\"></i></button>\n        </div>\n      </div>\n\n      <div id=\"TabSettings\" class=\"tab-content\">\n        <div class=\"settings-container\">\n          <div class=\"settings-header\">\n            <div id=\"settings-title\">Settings</div>\n          </div>\n          <div id=\"profile\" class=\"settings-box\">\n            <div class=\"settings-box-title\">Profile</div>\n            <div class=\"settings-section\">\n              <div class=\"settings-item-title\">Email:</div>\n              <div class=\"settings-item-content\">\n                <textarea id=\"signup-email\" type=\"email\" placeholder=\"Email\"></textarea>\n                <button id=\"auth-button\" title=\"Send\" type=\"submit\" class=\"settings-button\">Verify</button>\n                <button id=\"deauth-button\" title=\"Send\" type=\"submit\" class=\"settings-button\">Deactivate</button>\n                <div id=\"auth-status\"></div>\n              </div>\n            </div>\n          </div>\n          <div id=\"help\" class=\"settings-box\">\n            <div class=\"settings-box-title\">Help</div>\n            <div class=\"settings-section\">\n              <div class=\"settings-item-title\">Website</div>\n              <div class=\"settings-item-content\">\n                <a class=\"settings-button\" href=\"https://shadowai.webflow.io/\">Go to Website</a>\n              </div>\n            </div>\n            <div class=\"settings-section\">\n              <div class=\"settings-item-title\">Email</div>\n              <div class=\"settings-item-content\">\n                <a class=\"settings-button\" href=\"mailto: help@shadow-ai.com\">help@shadow-ai.com</a>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </main>\n  </body>\n</html>\n";
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (code);
 }();

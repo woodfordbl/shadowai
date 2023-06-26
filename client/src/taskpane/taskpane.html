@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shadow-Ai</title>
+
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    <script type="text/javascript" src="taskpane.js"></script>
+
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/vs.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  </head>
+  <body>
+    <header>
+      <div class="navbar-wrapper">
+        <nav>
+          <ul>
+            <li><a class="tab active" data-tab="TabCreate">Create</a></li>
+            <li><a class="tab" data-tab="TabExplain">Explain</a></li>
+            <li><a class="tab" data-tab="TabVBAI">VB-Ai</a></li>
+            <li><a class="tab" data-tab="TabSettings"><i class="fas fa-cog fa-lg"></i></i></a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="app-body">
+      <div id="TabCreate" class="tab-content active">
+        <div id="output">
+          <div class="button-container">
+            <div id="output-title">Examples</div>
+            <div id="button-rec1" class="box-button">
+              <div id="rec1" class="box-content">
+                For first names in <span class="cell-reference" style="color: #00a7e1">A1:A15</span> and lastnames in
+                <span class="cell-reference" style="color: #4094de">B1:B15</span> Retrieve a first name based on a given
+                last name in cell <span class="cell-reference" style="color: #6a7ed1">C1</span>
+              </div>
+            </div>
+            <div id="button-rec2" class="box-button">
+              <div id="rec2" class="box-content">
+                Create a formula that finds the most frequent value in the array
+                <span class="cell-reference" style="color: #00a7e1">A1:C15</span>
+              </div>
+            </div>
+            <div id="button-rec3" class="box-button">
+              <div id="rec3" class="box-content">
+                Generate a formula that calculates the present value of an annuity with variable growth rates based on
+                cash flow in <span class="cell-reference" style="color: #00a7e1">B1:B10</span>, growth rates
+                corresponding to each cash flow in <span class="cell-reference" style="color: #4094de">C1:C10</span>,
+                and the number of periods for each cash flow in column
+                <span class="cell-reference" style="color: #6a7ed1">A1:A10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-container">
+          <textarea type="submit" id="generateInput" class="text-box" placeholder="Create a formula. . ." style="height: 35px; max-height: 200px; overflow-y: hidden"></textarea>
+          <button id="generateInput-button" title="Send" type="submit" class="form-button">
+            <i class="fa fa-paper-plane fa-lg"></i>
+          </button>
+          <button id="generate-refresh" type="submit" title="Refresh App" class="form-button refresh"><i class="fa fa-retweet"></i></button>
+        </div>
+      </div>
+
+      <div id="TabExplain" class="tab-content">
+        <div id="explain-output">
+          <div class="explain-container">
+            <div id="output-title">Examples</div>
+            <div class="explain-row">
+              <div class="box-button explain-button">
+                <div id="explain1" class="box-content">
+                  =HLOOKUP(
+                  <span class="cell-reference" style="color: #00A7E1">A2</span>, 
+                  <span class="cell-reference" style="color: #4094DE">A1:E5</span>, 3, FALSE)?</div>
+              </div>
+              <div class="box-button explain-button">
+                <div id="explain2" class="box-content">How does =MODE.MULT(<span class="cell-reference" style="color: #00A7E1">A1:A10</span>) work?</div>
+              </div>
+            </div>
+            <div class="explain-row">
+              <div class="box-button explain-button">
+                <div id="explain3" class="box-content">How does the NPER function calculate the number of periods?</div>
+              </div>
+              <div class="box-button explain-button">
+                <div id="explain4" class="box-content">
+                  What does the XIRR formula do in this example: =XIRR(
+                  <span class="cell-reference" style="color: #00A7E1">B2:B7</span>, 
+                  <span class="cell-reference" style="color: #4094DE">A2:A7</span>)?
+                </div>
+              </div>
+            </div>
+            <div class="explain-row">
+              <div class="box-button explain-button">
+                <div id="explain5" class="box-content">How does the SUBTOTAL function work?</div>
+              </div>
+              <div class="box-button explain-button">
+                <div id="explain6" class="box-content">
+                  What does =FV(
+                  <span class="cell-reference" style="color: #00A7E1">A2</span>, <span class="cell-reference" style="color: #4094DE">B2</span>,-<span class="cell-reference" style="color: #6A7ED1">C2</span>,-<span class="cell-reference" style="color: #8A65BA">D2</span>) calculate?
+                </div>
+              </div>
+            </div>
+         </div>
+        </div>
+        <div class="form-container">
+          <textarea type="submit" id="explainInput" class="text-box" placeholder="Explain a formula. . ." style="height: 35px; max-height: 200px; overflow-y: hidden"></textarea>
+          <button id="button-explainInput" title="Send" type="submit" class="form-button">
+            <i class="fa fa-paper-plane fa-lg"></i>
+          </button>
+          <button id="explain-current" type="submit" title="Insert Current Cell Formula" class="form-button current" ><i class="fas fa-arrow-down"></i></button>
+          <button id="explain-refresh" type="submit" title="Refresh Page" class="form-button refresh"><i class="fa fa-retweet"></i></button>
+        </div>
+      </div>
+
+      <div id="TabVBAI" class="tab-content">
+        <div class="container">
+          <div class="code-container">
+            <div class="code-header">
+              <div class="code-text-left"><span class="code-title">Visual Basic</span></div>
+              <div class="code-buttons">
+                <button id="vba-copy" class="code-button" title="Copy"><i class="fas fa-copy fa-lg"></i></button>
+              </div>
+            </div>
+            <div class="code-content">
+              <pre id="code-pre">
+                <code id="code-output" class="hljs Visual Basic">
+                </code>
+              </pre>
+            </div>
+          </div>
+        </div>
+        <div class="form-container">
+          <textarea type="submit" id="vbaInput" class="text-box" placeholder="Create VBA. . ." style="height: 35px; max-height: 200px; overflow-y: hidden"></textarea>
+          <button id="button-vbaInput" title="Send" type="submit" class="form-button"><i class="fa fa-paper-plane fa-lg"></i></i></button>
+          <button id="vba-current" type="submit" title="Insert Current Cell Formula" class="form-button current"><i class="fas fa-arrow-down"></i></button>
+          <button id="vba-refresh" type="submit" title="Refresh Page" class="form-button refresh"><i class="fa fa-retweet"></i></button>
+        </div>
+      </div>
+
+      <div id="TabSettings" class="tab-content">
+        <div class="settings-container">
+          <div class="settings-header">
+            <div id="settings-title">Settings</div>
+          </div>
+          <div id="profile" class="settings-box">
+            <div class="settings-box-title">Profile</div>
+            <div class="settings-section">
+              <div class="settings-item-title">Email:</div>
+              <div class="settings-item-content">
+                <textarea id="signup-email" type="email" placeholder="Email"></textarea>
+                <button id="auth-button" title="Send" type="submit" class="settings-button">Verify</button>
+                <button id="deauth-button" title="Send" type="submit" class="settings-button">Deactivate</button>
+                <div id="auth-status"></div>
+              </div>
+            </div>
+          </div>
+          <div id="help" class="settings-box">
+            <div class="settings-box-title">Help</div>
+            <div class="settings-section">
+              <div class="settings-item-title">Website</div>
+              <div class="settings-item-content">
+                <a class="settings-button" href="https://shadowai.webflow.io/">Go to Website</a>
+              </div>
+            </div>
+            <div class="settings-section">
+              <div class="settings-item-title">Email</div>
+              <div class="settings-item-content">
+                <a class="settings-button" href="mailto: help@shadow-ai.com">help@shadow-ai.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
